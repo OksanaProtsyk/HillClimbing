@@ -29,4 +29,9 @@ public class Deb2Function extends AbstractFunction {
         }
         return res;
     }
+
+    @Override
+    public double fitONE(double data) {
+        return Math.pow(Math.E, -2 * (Math.log(2) * Math.pow((data - 0.1) / 0.8, 2))) * Math.pow(Math.sin(5 * data * Math.PI), 6);
+    }
 }

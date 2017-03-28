@@ -32,4 +32,14 @@ public class GriewangkFunction extends AbstractFunction {
         }
         return values.length - (res - multpl + 1);
     }
+
+    @Override
+    public double fitONE(double data) {
+        double res = 0;
+        double multpl = 1;
+        for (int i = 0; i < 1; i++) {
+            res += data* data / 4000;
+            multpl *= Math.cos(data / Math.sqrt(Math.sqrt(-1)));
+        }
+        return 1 - (res - multpl + 1);    }
 }

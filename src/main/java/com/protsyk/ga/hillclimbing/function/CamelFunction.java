@@ -22,4 +22,9 @@ public class CamelFunction extends AbstractFunction {
         return res;
     }
 
+    @Override
+    public double fitONE(double data) {
+        return 0;  //To change body of implemented methods use File | Settings | File Templates.
+    }
+
 }

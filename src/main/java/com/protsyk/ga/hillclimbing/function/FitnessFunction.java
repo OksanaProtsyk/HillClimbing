@@ -29,5 +29,7 @@ public interface FitnessFunction {
     public int after_comma();
 
     public int spaceSize();
+    public double fitONE(double data);
+
 
 }

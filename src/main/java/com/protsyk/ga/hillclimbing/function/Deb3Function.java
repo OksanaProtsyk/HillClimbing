@@ -28,4 +28,9 @@ public class Deb3Function extends AbstractFunction {
         }
         return res / values.length;
     }
+
+    @Override
+    public double fitONE(double data) {
+        return 0;  //To change body of implemented methods use File | Settings | File Templates.
+    }
 }

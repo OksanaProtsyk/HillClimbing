@@ -13,7 +13,7 @@ import com.protsyk.ga.hillclimbing.model.Chromosome;
  * To change this template use File | Settings | File Templates.
  */
 public class BinaryPopulationGenerator implements PopulationGenerator {
-    @Override
+
     public Chromosome[] generatePopulation(int numberOfChromosome, FitnessFunction fitnessFunction) {
         Chromosome[] population = new Chromosome[numberOfChromosome];
         for (int i = 0; i < numberOfChromosome; i++) {

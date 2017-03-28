@@ -57,6 +57,11 @@ public class BinaryChromosome implements Chromosome {
     }
 
     @Override
+    public void setValues(double[] values) {
+        //To change body of implemented methods use File | Settings | File Templates.
+    }
+
+    @Override
     public String toString() {
         StringBuffer res = new StringBuffer();
         for (int i = 0; i < bits.length; i++) {

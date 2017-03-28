@@ -1,6 +1,5 @@
 package com.protsyk.ga.hillclimbing.function;
 
-import com.protsyk.ga.BitString;
 import com.protsyk.ga.hillclimbing.model.Chromosome;
 
 /**
@@ -29,5 +28,10 @@ public class Deb1Function extends AbstractFunction {
             res += Math.pow(Math.sin(5 * values[i] * Math.PI), 6);
         }
         return res / values.length;
+    }
+
+    @Override
+    public double fitONE(double data) {
+        return 0;  //To change body of implemented methods use File | Settings | File Templates.
     }
 }

@@ -12,9 +12,9 @@ import com.protsyk.ga.hillclimbing.model.DoubleChomosome;
  * To change this template use File | Settings | File Templates.
  */
 public class DoublePopulationGenerator implements PopulationGenerator {
-    @Override
-    public Chromosome[] generatePopulation(int numberOfChromosome,FitnessFunction fitnessFunction) {
-        Chromosome[] population = new Chromosome[numberOfChromosome];
+
+    public DoubleChomosome[] generatePopulation(int numberOfChromosome,FitnessFunction fitnessFunction) {
+        DoubleChomosome[] population = new DoubleChomosome[numberOfChromosome];
         for (int i = 0; i < numberOfChromosome; i++) {
             population[i] = new DoubleChomosome(fitnessFunction);
         }

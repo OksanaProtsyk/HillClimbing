@@ -13,6 +13,15 @@ import com.protsyk.ga.hillclimbing.utils.Utils;
  */
 public class DoubleChomosome implements Chromosome {
     double[] values;
+
+    public FitnessFunction getFunction() {
+        return function;
+    }
+
+    public void setFunction(FitnessFunction function) {
+        this.function = function;
+    }
+
     FitnessFunction function;
 
     public DoubleChomosome(FitnessFunction f) {
@@ -21,6 +30,20 @@ public class DoubleChomosome implements Chromosome {
         for (int i = 0; i < f.spaceSize(); i++) {
             values[i] = Calc.random(f.a(), f.b());
         }
+    }
+
+    public double[] getValues() {
+        return values;
+    }
+
+    public void setValues(double[] values) {
+        this.values = values;
+    }
+
+    public DoubleChomosome(FitnessFunction f, double[] values) {
+        this.function = f;
+
+        this.values = values;
     }
 
     @Override

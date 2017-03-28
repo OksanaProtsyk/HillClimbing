@@ -11,5 +11,5 @@ import com.protsyk.ga.hillclimbing.model.Chromosome;
  * To change this template use File | Settings | File Templates.
  */
 public interface PopulationGenerator {
-     Chromosome[] generatePopulation(int numberOfChromosome,FitnessFunction fitnessFunction);
+    // Chromosome[] generatePopulation(int numberOfChromosome,FitnessFunction fitnessFunction);
 }

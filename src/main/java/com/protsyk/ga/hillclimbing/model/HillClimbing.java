@@ -18,13 +18,6 @@ public abstract class HillClimbing {
         this.eps = eps;
     }
 
-    Chromosome[] run() {
-        while(initialNeighbourhood>=eps){
-              for (int i=0;i<population.length;i++)    {
 
-              }
-        }
-        return population;
-    }
 
 }
