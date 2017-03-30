@@ -37,8 +37,8 @@ public class Main {
 
         DoublePopulationGenerator doublePopulationGenerator = new DoublePopulationGenerator();
         BinaryPopulationGenerator binaryPopulationGenerator = new BinaryPopulationGenerator();
-        DoubleChomosome[] doublePopluation =  doublePopulationGenerator.generatePopulation(10000, deb1Function2);
-        BinaryChromosome[] binarypopulation = binaryPopulationGenerator.generatePopulation(10000,deb1Function2);
+        DoubleChomosome[] doublePopluation =  doublePopulationGenerator.generatePopulation(10000, deb1Function);
+        BinaryChromosome[] binarypopulation = binaryPopulationGenerator.generatePopulation(10000,deb1Function);
         Utils.printArr(doublePopluation);
         System.out.println("_________________________________");
 

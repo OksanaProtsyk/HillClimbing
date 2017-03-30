@@ -12,8 +12,11 @@ import com.protsyk.ga.hillclimbing.utils.Utils;
 public abstract class AbstractFunction implements FitnessFunction {
     public  double a = 0;
     public  double b = 1;
+    public  int maxNFE= 400000;
+
     public static int AFTER_COMMA = 3;
     public int spaceSize = 1;
+
 
     @Override
     public double[] decode(int[] chomosome) {
@@ -77,5 +80,9 @@ public abstract class AbstractFunction implements FitnessFunction {
     @Override
     public int spaceSize() {
         return spaceSize;
+    }
+    @Override
+    public int maxNFE() {
+        return maxNFE;
     }
 }

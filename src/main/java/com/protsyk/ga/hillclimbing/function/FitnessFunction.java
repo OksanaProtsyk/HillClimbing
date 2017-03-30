@@ -32,6 +32,9 @@ public interface FitnessFunction {
     public double fitONE(double data);
     public double fitTwo(double x,double y);
 
+    public int maxNFE();
+
+
 
 
 

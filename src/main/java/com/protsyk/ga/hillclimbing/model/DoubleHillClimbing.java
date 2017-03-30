@@ -24,14 +24,13 @@ public class DoubleHillClimbing {
     }
 
     public Chromosome[] run() {
+        int NFE =0;
         int dimention = population[0].values.length;
         TwoDFisualizer visual = new TwoDFisualizer(population[0].getFunction());
         ThreeDFisualizer visual3d = new ThreeDFisualizer(population[0].getFunction());
 
-
-
         boolean change = true;
-        while (initialNeighbourhood >= eps) {
+        while ((initialNeighbourhood >= eps)&&(NFE<=population[0].getFunction().maxNFE())) {
             if (dimention == 1) {
                 visual.printPopulation(population);
             }
@@ -45,16 +44,19 @@ public class DoubleHillClimbing {
                     change = false;
                     for (int j = random; j < population[i].values.length; j++) {
                         double currentFitness = population[i].fitness();
+                        NFE++;
                         population[i].values[j] = population[i].values[j] + initialNeighbourhood;
                         if (population[i].values[j]>population[i].getFunction().b()){
                             population[i].values[j]=population[i].values[j]-population[i].getFunction().b();
                         }
                         if (population[i].fitness() < currentFitness) {
+                            NFE++;
                             population[i].values[j] = population[i].values[j] - 2 * initialNeighbourhood;
                             if (population[i].values[j]<population[i].getFunction().a()){
                                 population[i].values[j]=population[i].values[j]+population[i].getFunction().b();
                             }
                             if (population[i].fitness() < currentFitness) {
+                                NFE++;
                                 population[i].values[j] = population[i].values[j] + initialNeighbourhood;
                                 if (population[i].values[j]>population[i].getFunction().b()){
                                     population[i].values[j]=population[i].values[j]-population[i].getFunction().b();
@@ -82,6 +84,7 @@ public class DoubleHillClimbing {
 
 
         }
+        System.out.println("Number of fitness function evaluations, NFE = "+NFE);
         return population;
     }
 }

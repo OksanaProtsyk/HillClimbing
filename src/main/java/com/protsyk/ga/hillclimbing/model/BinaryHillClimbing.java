@@ -24,8 +24,10 @@ public class BinaryHillClimbing {
 
     public BinaryChromosome[] run() {
         JFrame frame = new JFrame("sfk");
+        int NFE =0;
+
         TwoDFisualizer visual = new TwoDFisualizer(population[0].getFunction());
-        while (initialNeighbourhood > eps) {
+        while (initialNeighbourhood > eps&&(NFE<=population[0].getFunction().maxNFE())) {
             for (int i = 0; i < population.length; i++) {
                 int start = Calc.randomInt(0, population[i].bits.length);
                 boolean change = true;
@@ -33,8 +35,10 @@ public class BinaryHillClimbing {
                     change = false;
                     for (int j = start; j < population[i].bits.length; j++) {
                         double currFunc =  population[i].fitness();
+
                         population[i].bits[j] = 1-population[i].bits[j];
                         if (currFunc>population[i].fitness())  {
+                            NFE++;
                             population[i].bits[j] = 1-population[i].bits[j];
                         }
                         else {
@@ -46,6 +50,7 @@ public class BinaryHillClimbing {
             initialNeighbourhood=initialNeighbourhood/2;
             visual.printPopulation( population);
         }
+        System.out.println("Number of fitness function evaluations, NFE = "+NFE);
         return population;
     }
 }
