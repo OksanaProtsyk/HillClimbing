@@ -21,7 +21,7 @@ public class Main {
         JFrame frame = new JFrame("a plot panel");
 
         Deb2Function deb2Function = new Deb2Function(1);
-        Deb1Function deb1Function = new Deb1Function(1);
+        Deb1Function deb1Function = new Deb1Function(4);
         Deb3Function deb3Function = new Deb3Function(1);
 
         Deb4Function deb4Function = new Deb4Function(1);
@@ -35,18 +35,20 @@ public class Main {
         Utils.printArr(doublePopluation);
         System.out.println("_________________________________");
 
-        DoubleHillClimbing hillClimbing = new DoubleHillClimbing(doublePopluation,0.1,0.0000000000000000000000000000001);
+        DoubleHillClimbing hillClimbing = new DoubleHillClimbing(doublePopluation,0.1,0.001);
        // TwoDFisualizer visual = new TwoDFisualizer(doublePopluation[0].getFunction());
         //visual.printPopulation(doublePopluation);
 
         Utils.printArr(hillClimbing.run());
 
-        BinaryHillClimbing binaryHillClimbing = new BinaryHillClimbing(binarypopulation,1,0.00000000001);
+        BinaryHillClimbing binaryHillClimbing = new BinaryHillClimbing(binarypopulation,1,0.000001);
         //BinaryChromosome[] finalPopulatin =  binaryHillClimbing.run();
        // Utils.printArr(finalPopulatin);
 
 
         //TwoDPrinter.printPopulation(deb2Function,doublePopluation);
+        System.out.println("+++++++++++++++++");
+
 
 
     }
