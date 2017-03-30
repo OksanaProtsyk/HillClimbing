@@ -35,6 +35,7 @@ public class RastriginFunction extends AbstractFunction {
 
     @Override
     public double fitONE(double data) {
-        return 0;  //To change body of implemented methods use File | Settings | File Templates.
-    }
+        double res = (A * Math.cos(w * data) - data * data);
+
+        return res - 1 * A;    }
 }

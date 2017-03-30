@@ -14,8 +14,8 @@ import com.protsyk.ga.hillclimbing.model.Chromosome;
  */
 public class BinaryPopulationGenerator implements PopulationGenerator {
 
-    public Chromosome[] generatePopulation(int numberOfChromosome, FitnessFunction fitnessFunction) {
-        Chromosome[] population = new Chromosome[numberOfChromosome];
+    public BinaryChromosome[] generatePopulation(int numberOfChromosome, FitnessFunction fitnessFunction) {
+        BinaryChromosome[] population = new BinaryChromosome[numberOfChromosome];
         for (int i = 0; i < numberOfChromosome; i++) {
             population[i] = new BinaryChromosome(fitnessFunction);
         }

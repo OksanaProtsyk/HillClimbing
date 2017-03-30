@@ -32,6 +32,6 @@ public class Deb1Function extends AbstractFunction {
 
     @Override
     public double fitONE(double data) {
-        return 0;  //To change body of implemented methods use File | Settings | File Templates.
+        return Math.pow(Math.sin(5 * data * Math.PI), 6);  //To change body of implemented methods use File | Settings | File Templates.
     }
 }

@@ -12,63 +12,52 @@ import javax.swing.*;
  * Time: 4:33 PM
  * To change this template use File | Settings | File Templates.
  */
-public class DoubleHillClimbing extends HillClimbing {
+public class DoubleHillClimbing {
+    double initialNeighbourhood;
+    double eps;
+    DoubleChomosome[] population;
+
     public DoubleHillClimbing(DoubleChomosome[] population, double initialNeighbourhood, double eps) {
-        super(population, initialNeighbourhood, eps);
+        this.population = population;
+        this.initialNeighbourhood = initialNeighbourhood;
+        this.eps = eps;
     }
 
     public Chromosome[] run() {
-        JFrame frame = new JFrame("sfk");
+        TwoDFisualizer visual = new TwoDFisualizer(population[0].getFunction());
         boolean change = true;
-        double currentFitness = 0;
         while (initialNeighbourhood >= eps) {
             for (int i = 0; i < population.length; i++) {
                 //int random = Calc.randomInt(0, population[i].decode().length);
                 change = true;
                 while (change) {
                     change = false;
-                    for (int j = 0; j < population[i].decode().length; j++) {
-                        currentFitness = population[i].fitness();
-                        double[] val = population[i].decode();
-                        double[] valMinus = population[i].decode();
+                    for (int j = 0; j < population[i].values.length; j++) {
+                        double currentFitness = population[i].fitness();
+                        population[i].values[j] = population[i].values[j] + initialNeighbourhood ;
+                        if (population[i].fitness() < currentFitness) {
+                            population[i].values[j] = population[i].values[j] - 2 * initialNeighbourhood;
+                            if (population[i].fitness() < currentFitness) {
+                                population[i].values[j] = population[i].values[j] + initialNeighbourhood;
 
-                        val[j] = val[j] + initialNeighbourhood;
-                        System.out.println("++++++++++++"+valMinus[j]);
-                        valMinus[j] = valMinus[j] - initialNeighbourhood;
-                        System.out.println("------++++++++++++"+valMinus[j]);
-
-                        DoubleChomosome addChromosome = new DoubleChomosome(population[i].getFunction(), val);
-                        DoubleChomosome minusChromosome = new DoubleChomosome(population[i].getFunction(), valMinus);
-
-                        if (addChromosome.fitness() > currentFitness) {
-                            System.out.println("PREV: " );
-                            Utils.printArr(population[i].decode());
-                            population[i].setValues(val);
-                            System.out.println("NEXT: ");
-                            Utils.printArr(population[i].decode());
-
+                            } else {
+                                change = true;
+                            }
+                        } else {
                             change = true;
-                        } else if (minusChromosome.fitness() > currentFitness) {
-                            System.out.println("PREV: " );
-                            Utils.printArr(population[i].decode());
-                            population[i].setValues(valMinus);
-                            System.out.println("NEXT: ");
-                            Utils.printArr(population[i].decode());
-                            change = true;
-
                         }
+
                     }
 
 
                 }
 
 
-
             }
 
-            TwoDPrinter.printPopulation(population[0].getFunction(),population,frame);
-
-            initialNeighbourhood = initialNeighbourhood/2;
+            //TwoDPrinter.printPopulation(population[0].getFunction(),population,frame);
+            visual.printPopulation( population);
+            initialNeighbourhood = initialNeighbourhood / 2;
 
         }
         return population;

@@ -22,7 +22,7 @@ public class ShubertFunction extends AbstractFunction {
 
     @Override
     public double fit(double[] values) {
-        double res = 0;
+        double res = 1;
         for (int i = 0; i < values.length; i++) {
             double sum = 0;
             for (int j = 1; j < 5; j++) {
@@ -35,6 +35,9 @@ public class ShubertFunction extends AbstractFunction {
 
     @Override
     public double fitONE(double data) {
-        return 0;  //To change body of implemented methods use File | Settings | File Templates.
-    }
+            double sum = 0;
+            for (int j = 1; j < 5; j++) {
+                sum += j * Math.cos((j + 1) * data + j);
+            }
+        return sum;    }
 }
