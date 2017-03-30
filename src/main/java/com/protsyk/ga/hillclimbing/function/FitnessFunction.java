@@ -30,6 +30,9 @@ public interface FitnessFunction {
 
     public int spaceSize();
     public double fitONE(double data);
+    public double fitTwo(double x,double y);
+
+
 
 
 }

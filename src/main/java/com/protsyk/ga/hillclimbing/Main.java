@@ -21,17 +21,24 @@ public class Main {
         JFrame frame = new JFrame("a plot panel");
 
         Deb2Function deb2Function = new Deb2Function(1);
-        Deb1Function deb1Function = new Deb1Function(4);
+        Deb1Function deb1Function = new Deb1Function(1);
         Deb3Function deb3Function = new Deb3Function(1);
 
         Deb4Function deb4Function = new Deb4Function(1);
+        RastriginFunction rastriginFunction = new RastriginFunction(1);
+        GriewangkFunction griewangkFunction = new GriewangkFunction(1);
+        ShubertFunction shubertFunction = new ShubertFunction(1);
+
+        Deb1Function deb1Function2 = new Deb1Function(2);
+
+        Deb2Function deb2Function2 = new Deb2Function(2);
 
 
-        GriewangkFunction  griewangkFunction = new GriewangkFunction(1);
+
         DoublePopulationGenerator doublePopulationGenerator = new DoublePopulationGenerator();
         BinaryPopulationGenerator binaryPopulationGenerator = new BinaryPopulationGenerator();
-        DoubleChomosome[] doublePopluation =  doublePopulationGenerator.generatePopulation(10000, deb1Function);
-        BinaryChromosome[] binarypopulation = binaryPopulationGenerator.generatePopulation(10000,deb3Function);
+        DoubleChomosome[] doublePopluation =  doublePopulationGenerator.generatePopulation(10000, deb1Function2);
+        BinaryChromosome[] binarypopulation = binaryPopulationGenerator.generatePopulation(10000,deb1Function2);
         Utils.printArr(doublePopluation);
         System.out.println("_________________________________");
 

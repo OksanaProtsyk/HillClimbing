@@ -12,6 +12,8 @@ public class ShubertFunction extends AbstractFunction {
 
     public ShubertFunction(int spaceSize) {
         this.spaceSize = spaceSize;
+        this.a = -10;
+        this.b = 10;
     }
 
     public ShubertFunction(int spaceSize, double a, double b) {
@@ -40,4 +42,9 @@ public class ShubertFunction extends AbstractFunction {
                 sum += j * Math.cos((j + 1) * data + j);
             }
         return sum;    }
+
+    @Override
+    public double fitTwo(double x, double y) {
+        return 0;
+    }
 }

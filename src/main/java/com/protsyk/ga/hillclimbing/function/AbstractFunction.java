@@ -10,8 +10,8 @@ import com.protsyk.ga.hillclimbing.utils.Utils;
  * To change this template use File | Settings | File Templates.
  */
 public abstract class AbstractFunction implements FitnessFunction {
-    public static double a = 0;
-    public static double b = 1;
+    public  double a = 0;
+    public  double b = 1;
     public static int AFTER_COMMA = 3;
     public int spaceSize = 1;
 

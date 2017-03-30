@@ -26,10 +26,18 @@ public class DoubleHillClimbing {
     public Chromosome[] run() {
         int dimention = population[0].values.length;
         TwoDFisualizer visual = new TwoDFisualizer(population[0].getFunction());
+        ThreeDFisualizer visual3d = new ThreeDFisualizer(population[0].getFunction());
+
 
 
         boolean change = true;
         while (initialNeighbourhood >= eps) {
+            if (dimention == 1) {
+                visual.printPopulation(population);
+            }
+            if (dimention == 2) {
+                visual3d.printPopulation(population);
+            }
             for (int i = 0; i < population.length; i++) {
                 int random = Calc.randomInt(0, population[i].values.length);
                 change = true;
@@ -38,10 +46,19 @@ public class DoubleHillClimbing {
                     for (int j = random; j < population[i].values.length; j++) {
                         double currentFitness = population[i].fitness();
                         population[i].values[j] = population[i].values[j] + initialNeighbourhood;
+                        if (population[i].values[j]>population[i].getFunction().b()){
+                            population[i].values[j]=population[i].values[j]-population[i].getFunction().b();
+                        }
                         if (population[i].fitness() < currentFitness) {
                             population[i].values[j] = population[i].values[j] - 2 * initialNeighbourhood;
+                            if (population[i].values[j]<population[i].getFunction().a()){
+                                population[i].values[j]=population[i].values[j]+population[i].getFunction().b();
+                            }
                             if (population[i].fitness() < currentFitness) {
                                 population[i].values[j] = population[i].values[j] + initialNeighbourhood;
+                                if (population[i].values[j]>population[i].getFunction().b()){
+                                    population[i].values[j]=population[i].values[j]-population[i].getFunction().b();
+                                }
 
                             } else {
                                 change = true;
@@ -59,9 +76,7 @@ public class DoubleHillClimbing {
             }
 
             //TwoDPrinter.printPopulation(population[0].getFunction(),population,frame);
-            if (dimention == 1) {
-                visual.printPopulation(population);
-            }
+
             initialNeighbourhood = initialNeighbourhood / 2;
             System.out.println(initialNeighbourhood);
 

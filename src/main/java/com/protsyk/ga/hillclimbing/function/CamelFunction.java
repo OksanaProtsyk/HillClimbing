@@ -27,4 +27,10 @@ public class CamelFunction extends AbstractFunction {
         return 0;  //To change body of implemented methods use File | Settings | File Templates.
     }
 
+    @Override
+    public double fitTwo(double x, double y) {
+        return 0;
+    }
+
+
 }

@@ -9,13 +9,13 @@ package com.protsyk.ga.hillclimbing.function;
  * To change this template use File | Settings | File Templates.
  */
 public class RastriginFunction extends AbstractFunction {
-    public static double a = -5.12;
-    public static double b = 5.12;
     private static double A = 10;
     private static double w = 2 * Math.PI;
 
     public RastriginFunction(int spaceSize) {
         this.spaceSize = spaceSize;
+        this.a = -5.12;
+        this.b = 5.12;
     }
 
     public RastriginFunction(int spaceSize, double a, double b) {
@@ -37,5 +37,13 @@ public class RastriginFunction extends AbstractFunction {
     public double fitONE(double data) {
         double res = (A * Math.cos(w * data) - data * data);
 
-        return res - 1 * A;    }
+        return res - 1 * A;
+    }
+
+    @Override
+    public double fitTwo(double x, double y) {
+        return 0;
+    }
+
+
 }

@@ -9,6 +9,7 @@ package com.protsyk.ga.hillclimbing.model;
  */
 
 import com.protsyk.ga.hillclimbing.function.FitnessFunction;
+import com.protsyk.ga.hillclimbing.utils.Utils;
 import org.math.plot.Plot2DPanel;
 
 import javax.swing.*;
@@ -38,11 +39,13 @@ public class TwoDFisualizer {
 
 
     public  void printPopulation( Chromosome[] population){
-        double[] x = increment(f.a(), 0.001,f.b());
+        double[] x = increment(f.a(), 0.01,f.b());
         double[] y = new double[x.length];
         for(int i =0; i<y.length;++i) {
             y[i] = f.fitONE(x[i]);
         }
+       // System.out.println(f.b()+":::::::::::::::::::::::::::::::::::::::"+f.a());
+       // Utils.printArr(x);
         plot = new Plot2DPanel();
 
 
@@ -68,9 +71,10 @@ public class TwoDFisualizer {
     public  double[] increment(double start, double step, double end) {
         double range = end - start;
         int steps = (int)(range / step);
+      //  System.out.println("RANGE "+range+" STEPS "+steps);
         double[] rv = new double[steps];
         for (int i = 0; i<steps; i++) {
-            rv[i] = start + ((step / range) * i);
+            rv[i] = start + ((step ) * i);
         }
         return rv;
     }

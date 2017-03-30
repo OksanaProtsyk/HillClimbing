@@ -9,11 +9,12 @@ package com.protsyk.ga.hillclimbing.function;
  * To change this template use File | Settings | File Templates.
  */
 public class GriewangkFunction extends AbstractFunction {
-    public static double a = -600;
-    public static double b = 600;
+
 
     public GriewangkFunction(int spaceSize) {
         this.spaceSize = spaceSize;
+        this.a = -600;
+        this.b = 600;
     }
 
     public GriewangkFunction(int spaceSize, double a, double b) {
@@ -28,18 +29,21 @@ public class GriewangkFunction extends AbstractFunction {
         double multpl = 1;
         for (int i = 0; i < values.length; i++) {
             res += values[i] * values[i] / 4000;
-            multpl *= Math.cos(values[i] / Math.sqrt(Math.sqrt(-1)));
+            multpl *= Math.cos(values[i] / Math.sqrt(i));
         }
         return values.length - (res - multpl + 1);
     }
 
     @Override
     public double fitONE(double data) {
-        double res = 0;
-        double multpl = 1;
-        for (int i = 0; i < 1; i++) {
-            res += data* data / 4000;
-            multpl *= Math.cos(data / Math.sqrt(Math.sqrt(-1)));
-        }
-        return 1 - (res - multpl + 1);    }
+
+
+        return 1- (data* data / 4000 -  Math.cos(data  )+1);
+    }
+
+    @Override
+    public double fitTwo(double x, double y) {
+        return 0;
+    }
+
 }
