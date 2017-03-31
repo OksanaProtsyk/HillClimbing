@@ -13,8 +13,8 @@ public class GriewangkFunction extends AbstractFunction {
 
     public GriewangkFunction(int spaceSize) {
         this.spaceSize = spaceSize;
-        this.a = -600;
-        this.b = 600;
+        this.a = -6;
+        this.b = 6;
     }
 
     public GriewangkFunction(int spaceSize, double a, double b) {
@@ -38,12 +38,12 @@ public class GriewangkFunction extends AbstractFunction {
     public double fitONE(double data) {
 
 
-        return 1- (data* data / 4000 -  Math.cos(data  )+1);
+        return 10- (data* data / 4000 -  Math.cos(data )+1);
     }
 
     @Override
     public double fitTwo(double x, double y) {
-        return 0;
+        return 10 -( x* x / 4000 +y* y / 4000 +Math.cos(x / Math.sqrt(1))*Math.cos(y / Math.sqrt(2))+1);
     }
 
 }

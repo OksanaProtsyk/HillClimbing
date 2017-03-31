@@ -37,7 +37,11 @@ public class Deb2Function extends AbstractFunction {
 
     @Override
     public double fitTwo(double x, double y) {
-        return 0;
+
+
+            return Math.pow(Math.E, -2 * (Math.log(2) * Math.pow((x - 0.1) / 0.8, 2))) * Math.pow(Math.sin(5 * x * Math.PI), 6)
+                    +Math.pow(Math.E, -2 * (Math.log(2) * Math.pow((y - 0.1) / 0.8, 2))) * Math.pow(Math.sin(5 * y * Math.PI), 6) ;
+
     }
 
 

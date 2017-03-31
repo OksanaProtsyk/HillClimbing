@@ -32,7 +32,7 @@ public class ShubertFunction extends AbstractFunction {
             }
             res *= sum;
         }
-        return res;
+        return -res;
     }
 
     @Override
@@ -41,10 +41,19 @@ public class ShubertFunction extends AbstractFunction {
             for (int j = 1; j < 5; j++) {
                 sum += j * Math.cos((j + 1) * data + j);
             }
-        return sum;    }
+        return -sum;    }
 
     @Override
     public double fitTwo(double x, double y) {
-        return 0;
+
+        double sumx = 0;
+        for (int j = 1; j < 5; j++) {
+            sumx += j * Math.cos((j + 1) * x + j);
+        };
+        double sumy = 0;
+        for (int j = 1; j < 5; j++) {
+            sumy += j * Math.cos((j + 1) * y + j);
+        };
+        return  -sumx*sumy;
     }
 }

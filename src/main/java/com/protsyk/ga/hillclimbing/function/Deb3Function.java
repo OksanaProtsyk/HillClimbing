@@ -36,7 +36,7 @@ public class Deb3Function extends AbstractFunction {
 
     @Override
     public double fitTwo(double x, double y) {
-        return 0;
+        return 0.5*(Math.pow(Math.sin(5 * Math.PI * (Math.pow(x, 0.75) - 0.05)), 6)+Math.pow(Math.sin(5 * Math.PI * (Math.pow(y, 0.75) - 0.05)), 6));
     }
 
 

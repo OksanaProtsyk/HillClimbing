@@ -42,7 +42,9 @@ public class RastriginFunction extends AbstractFunction {
 
     @Override
     public double fitTwo(double x, double y) {
-        return 0;
+        return (A * Math.cos(w * x) - x * x)
+                +(A * Math.cos(w * y) - y * y)
+                -2*A;
     }
 
 

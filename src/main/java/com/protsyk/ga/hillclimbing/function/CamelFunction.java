@@ -8,6 +8,11 @@ package com.protsyk.ga.hillclimbing.function;
  * To change this template use File | Settings | File Templates.
  */
 public class CamelFunction extends AbstractFunction {
+    public CamelFunction(){
+        this.spaceSize = 2;
+        this.a = -10;
+        this.b = 10;
+    }
 
     public CamelFunction(int spaceSize, double a, double b) {
         this.spaceSize = spaceSize;
@@ -29,7 +34,8 @@ public class CamelFunction extends AbstractFunction {
 
     @Override
     public double fitTwo(double x, double y) {
-        return 0;
+        return ((4 - 2.1 * x * x + Math.pow(x, 4) / 3) * x * x + x * y+
+                4 * (y *y - 1) * y * y);
     }
 
 

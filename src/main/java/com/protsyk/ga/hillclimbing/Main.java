@@ -32,12 +32,23 @@ public class Main {
         Deb1Function deb1Function2 = new Deb1Function(2);
 
         Deb2Function deb2Function2 = new Deb2Function(2);
+        Deb3Function deb3Function2 = new Deb3Function(2);
+        Deb4Function deb4Function2 = new Deb4Function(2);
+        RastriginFunction rastriginFunction2 = new RastriginFunction(2);
+        GriewangkFunction griewangkFunction2 = new GriewangkFunction(2);
+        CamelFunction camelFunction = new CamelFunction();
+        ShubertFunction shubertFunction2 = new ShubertFunction(2);
+
+
+
+
+
 
 
 
         DoublePopulationGenerator doublePopulationGenerator = new DoublePopulationGenerator();
         BinaryPopulationGenerator binaryPopulationGenerator = new BinaryPopulationGenerator();
-        DoubleChomosome[] doublePopluation =  doublePopulationGenerator.generatePopulation(10000, deb1Function);
+        DoubleChomosome[] doublePopluation =  doublePopulationGenerator.generatePopulation(1000, shubertFunction);
         BinaryChromosome[] binarypopulation = binaryPopulationGenerator.generatePopulation(10000,deb1Function);
         Utils.printArr(doublePopluation);
         System.out.println("_________________________________");

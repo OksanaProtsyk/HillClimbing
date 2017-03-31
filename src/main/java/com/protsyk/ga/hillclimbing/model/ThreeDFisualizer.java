@@ -43,19 +43,25 @@ public class ThreeDFisualizer {
         double[] x = increment(f.a(), 0.01, f.b());
         double[] y = increment(f.a(), 0.01, f.b());
 
-        double[] z = new double[x.length * y.length];
-        for (int i = 0; i < x.length; ++i) {
-            for (int j = 0; j < y.length; ++j) {
-                z[i + i * j] = f.fitTwo(x[i], y[j]);
-            }
-        }
+        double[][] z = new double[y.length][x.length];
+        for(int i =0; i<y.length; ++i)
+            for(int j=0; j<x.length; ++j)
+                z[j][i] =f.fitTwo(x[j],y[i]);
+
+        //double[] z = new double[x.length * y.length];
+//        for (int i = 0; i < x.length; ++i) {
+//            for (int j = 0; j < y.length; ++j) {
+//                z[i + i * j] = f.fitTwo(x[i], y[j]);
+//            }
+//        }j
         // System.out.println(f.b()+":::::::::::::::::::::::::::::::::::::::"+f.a());
         // Utils.printArr(x);
         plot = new Plot3DPanel();
 
+        plot.addGridPlot("3-D Plot", x, y, z);
 
         // add a line plot to the PlotPanel
-        int k = plot.addLinePlot("asd", x, y, z);
+       // int k = plot.addLinePlot("asd", x, y, z);
 
         for (int i = 0; i < population.length; i++) {
 
