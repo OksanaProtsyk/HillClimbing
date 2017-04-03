@@ -4,6 +4,7 @@ import com.protsyk.ga.Calc;
 import com.protsyk.ga.hillclimbing.function.FitnessFunction;
 import com.protsyk.ga.hillclimbing.model.BinaryChromosome;
 import com.protsyk.ga.hillclimbing.model.Chromosome;
+import com.protsyk.ga.hillclimbing.model.GrayChromosome;
 
 /**
  * Created with IntelliJ IDEA.
@@ -18,6 +19,14 @@ public class BinaryPopulationGenerator implements PopulationGenerator {
         BinaryChromosome[] population = new BinaryChromosome[numberOfChromosome];
         for (int i = 0; i < numberOfChromosome; i++) {
             population[i] = new BinaryChromosome(fitnessFunction);
+        }
+        return population;
+    }
+
+    public GrayChromosome[] generateGrayPopulation(int numberOfChromosome, FitnessFunction fitnessFunction) {
+        GrayChromosome[] population = new GrayChromosome[numberOfChromosome];
+        for (int i = 0; i < numberOfChromosome; i++) {
+            population[i] = new GrayChromosome(fitnessFunction);
         }
         return population;
     }
