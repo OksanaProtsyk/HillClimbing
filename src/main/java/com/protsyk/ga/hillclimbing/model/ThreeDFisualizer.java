@@ -63,13 +63,20 @@ public class ThreeDFisualizer {
         // add a line plot to the PlotPanel
        // int k = plot.addLinePlot("asd", x, y, z);
 
+        double[] xpopulation =  new double[population.length];
+        double[] ypopulation =  new double[population.length];
+        double[] zpopulation =  new double[population.length];
+
         for (int i = 0; i < population.length; i++) {
 
-            double[] fun = new double[population[i].decode().length];
-            fun[0] = f.fit(population[i].decode());
-            //list.add(plot.add
+            double[] fun = population[i].decode();
+            xpopulation[i]=fun[0];
+            ypopulation[i]=fun[1];
+            zpopulation[i]=population[i].getFunction().fitTwo(fun[0],fun[1]);
             //addScatterPlot("points",population[i].decode(),fun));
         }
+
+        plot.addScatterPlot("ololo",Color.RED,xpopulation,ypopulation,zpopulation);
         frame.setContentPane(plot);
         frame.setVisible(true);
         frame.setSize(1000, 700);

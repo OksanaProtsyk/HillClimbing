@@ -2,6 +2,9 @@ package com.protsyk.ga.hillclimbing.function;
 
 import com.protsyk.ga.hillclimbing.utils.Utils;
 
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  * Created with IntelliJ IDEA.
  * User: okpr0814
@@ -84,5 +87,10 @@ public abstract class AbstractFunction implements FitnessFunction {
     @Override
     public int maxNFE() {
         return maxNFE;
+    }
+
+    List<Double> findAllMaxima(){
+        ArrayList<Double> maximas = new ArrayList<Double>();
+        return maximas;
     }
 }

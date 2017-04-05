@@ -2,6 +2,9 @@ package com.protsyk.ga.hillclimbing.function;
 
 import com.protsyk.ga.hillclimbing.model.Chromosome;
 
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  * Created with IntelliJ IDEA.
  * User: okpr0814
@@ -37,10 +40,23 @@ public class Deb1Function extends AbstractFunction {
 
     @Override
     public double fitTwo(double x, double y) {
-        return 0.5*(Math.pow(Math.sin(5 * x * Math.PI), 6) +Math.pow(Math.sin(5 * y * Math.PI), 6));
+        return 0.5 * (Math.pow(Math.sin(5 * x * Math.PI), 6) + Math.pow(Math.sin(5 * y * Math.PI), 6));
     }
 
-
-
+    @Override
+    List<Double> findAllMaxima() {
+        double step = 0.01;
+        int xAmount = (int) ((b - a) / step);
+        double[][] array = new double[spaceSize][(int) ((b - a) / step)];
+        for (int i = 0; i < spaceSize; i++) {
+            double x = a;
+            array[i][0] = a;
+            for (int j = 1; j < xAmount; j++) {
+                array[i][j] = array[i][j - 1];
+            }
+        }
+        ArrayList<Double> maximas = new ArrayList<Double>();
+        return maximas;
+    }
 
 }

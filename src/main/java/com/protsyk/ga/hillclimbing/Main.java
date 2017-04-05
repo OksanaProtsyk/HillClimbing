@@ -17,7 +17,7 @@ import javax.swing.*;
  */
 public class Main {
 
-    public static void main(String[] args){
+    public static void main(String[] args) {
         JFrame frame = new JFrame("a plot panel");
 
         Deb2Function deb2Function = new Deb2Function(1);
@@ -40,40 +40,33 @@ public class Main {
         ShubertFunction shubertFunction2 = new ShubertFunction(2);
 
 
-
-
-
-
-
-
         DoublePopulationGenerator doublePopulationGenerator = new DoublePopulationGenerator();
         BinaryPopulationGenerator binaryPopulationGenerator = new BinaryPopulationGenerator();
-        DoubleChomosome[] doublePopluation =  doublePopulationGenerator.generatePopulation(1000, shubertFunction);
-        BinaryChromosome[] binarypopulation = binaryPopulationGenerator.generatePopulation(10000,shubertFunction);
-        BinaryChromosome[] graypopulation = binaryPopulationGenerator.generateGrayPopulation(10000,shubertFunction);
+        DoubleChomosome[] doublePopluation = doublePopulationGenerator.generatePopulation(1000, deb2Function2);
+        BinaryChromosome[] binarypopulation = binaryPopulationGenerator.generatePopulation(10000, shubertFunction);
+        BinaryChromosome[] graypopulation = binaryPopulationGenerator.generateGrayPopulation(10000, shubertFunction);
 
-        Utils.printArr(doublePopluation);
+        //Utils.printArr(doublePopluation);
         System.out.println("_________________________________");
 
-        DoubleHillClimbing hillClimbing = new DoubleHillClimbing(doublePopluation,0.1,0.001);
-       // TwoDFisualizer visual = new TwoDFisualizer(doublePopluation[0].getFunction());
+        DoubleHillClimbing hillClimbing = new DoubleHillClimbing(doublePopluation, 0.1, 0.00001);
+        // TwoDFisualizer visual = new TwoDFisualizer(doublePopluation[0].getFunction());
         //visual.printPopulation(doublePopluation);
 
-       Utils.printArr(hillClimbing.run());
+        hillClimbing.run();
 
-        BinaryHillClimbing binaryHillClimbing = new BinaryHillClimbing(binarypopulation,1,0.000000000000000000001);
+        BinaryHillClimbing binaryHillClimbing = new BinaryHillClimbing(binarypopulation, 1, 0.000000000000000000001);
 
-        BinaryHillClimbing grayHillClimbing = new BinaryHillClimbing(graypopulation,1,0.000000000000001);
-        BinaryChromosome[] finalPopulatin =  binaryHillClimbing.run();
-       // Utils.printArr(finalPopulatin);
-        grayHillClimbing.run();
+        BinaryHillClimbing grayHillClimbing = new BinaryHillClimbing(graypopulation, 1, 0.000000000000001);
+        // BinaryChromosome[] finalPopulatin =  binaryHillClimbing.run();
+        // Utils.printArr(finalPopulatin);
+        // grayHillClimbing.run();
 
-        int[] arr = {0,1,1,0,1,1};
+        int[] arr = {0, 1, 1, 0, 1, 1};
 
         Utils.printArr(Utils.grayToBinary(arr));
         //TwoDPrinter.printPopulation(deb2Function,doublePopluation);
         System.out.println("+++++++++++++++++");
-
 
 
     }
