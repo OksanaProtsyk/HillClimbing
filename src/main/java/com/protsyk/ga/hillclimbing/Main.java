@@ -7,6 +7,7 @@ import com.protsyk.ga.hillclimbing.utils.DoublePopulationGenerator;
 import com.protsyk.ga.hillclimbing.utils.Utils;
 
 import javax.swing.*;
+import java.util.Map;
 
 /**
  * Created with IntelliJ IDEA.
@@ -52,8 +53,14 @@ public class Main {
         DoubleHillClimbing hillClimbing = new DoubleHillClimbing(doublePopluation, 0.1, 0.00001);
         // TwoDFisualizer visual = new TwoDFisualizer(doublePopluation[0].getFunction());
         //visual.printPopulation(doublePopluation);
+        Map<double[],Double> mapp = deb3Function.allMaximas();
+        for (double[] l: mapp.keySet()){
+            Utils.printArr(l);
+            System.out.println("Va;;" + mapp.get(l));
 
-        hillClimbing.run();
+        }
+
+        //hillClimbing.run();
 
         BinaryHillClimbing binaryHillClimbing = new BinaryHillClimbing(binarypopulation, 1, 0.000000000000000000001);
 
@@ -67,6 +74,7 @@ public class Main {
         Utils.printArr(Utils.grayToBinary(arr));
         //TwoDPrinter.printPopulation(deb2Function,doublePopluation);
         System.out.println("+++++++++++++++++");
+
 
 
     }

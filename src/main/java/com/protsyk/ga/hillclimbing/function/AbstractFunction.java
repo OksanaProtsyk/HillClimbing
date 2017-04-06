@@ -4,6 +4,7 @@ import com.protsyk.ga.hillclimbing.utils.Utils;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 /**
  * Created with IntelliJ IDEA.
@@ -89,8 +90,6 @@ public abstract class AbstractFunction implements FitnessFunction {
         return maxNFE;
     }
 
-    List<Double> findAllMaxima(){
-        ArrayList<Double> maximas = new ArrayList<Double>();
-        return maximas;
-    }
+
+    public abstract Map<double[],Double> allMaximas();
 }

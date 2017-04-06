@@ -1,6 +1,8 @@
 package com.protsyk.ga.hillclimbing.function;
 
 
+import java.util.Map;
+
 /**
  * Created with IntelliJ IDEA.
  * User: okpr0814
@@ -55,5 +57,10 @@ public class ShubertFunction extends AbstractFunction {
             sumy += j * Math.cos((j + 1) * y + j);
         };
         return  -sumx*sumy;
+    }
+
+    @Override
+    public Map<double[], Double> allMaximas() {
+        return null;
     }
 }

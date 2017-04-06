@@ -1,6 +1,8 @@
 package com.protsyk.ga.hillclimbing.function;
 
 
+import java.util.Map;
+
 /**
  * Created with IntelliJ IDEA.
  * User: okpr0814
@@ -46,4 +48,8 @@ public class GriewangkFunction extends AbstractFunction {
         return 10 -( x* x / 4000 +y* y / 4000 +Math.cos(x / Math.sqrt(1))*Math.cos(y / Math.sqrt(2))+1);
     }
 
+    @Override
+    public Map<double[], Double> allMaximas() {
+        return null;
+    }
 }
