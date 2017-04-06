@@ -31,6 +31,7 @@ public class Main {
         ShubertFunction shubertFunction = new ShubertFunction(1);
 
         Deb1Function deb1Function2 = new Deb1Function(2);
+        Deb2Function deb2Function5 = new Deb2Function(5);
 
         Deb2Function deb2Function2 = new Deb2Function(2);
         Deb3Function deb3Function2 = new Deb3Function(2);
@@ -43,14 +44,14 @@ public class Main {
 
         DoublePopulationGenerator doublePopulationGenerator = new DoublePopulationGenerator();
         BinaryPopulationGenerator binaryPopulationGenerator = new BinaryPopulationGenerator();
-        DoubleChomosome[] doublePopluation = doublePopulationGenerator.generatePopulation(1000, deb2Function2);
+        DoubleChomosome[] doublePopluation = doublePopulationGenerator.generatePopulation(1000, deb2Function5);
         BinaryChromosome[] binarypopulation = binaryPopulationGenerator.generatePopulation(10000, shubertFunction);
         BinaryChromosome[] graypopulation = binaryPopulationGenerator.generateGrayPopulation(10000, shubertFunction);
 
         //Utils.printArr(doublePopluation);
         System.out.println("_________________________________");
 
-        DoubleHillClimbing hillClimbing = new DoubleHillClimbing(doublePopluation, 0.1, 0.00001);
+        DoubleHillClimbing hillClimbing = new DoubleHillClimbing(doublePopluation, 0.1, 0.000001);
         // TwoDFisualizer visual = new TwoDFisualizer(doublePopluation[0].getFunction());
         //visual.printPopulation(doublePopluation);
         Map<double[],Double> mapp = deb3Function.allMaximas();
@@ -60,7 +61,7 @@ public class Main {
 
         }
 
-        //hillClimbing.run();
+        hillClimbing.run();
 
         BinaryHillClimbing binaryHillClimbing = new BinaryHillClimbing(binarypopulation, 1, 0.000000000000000000001);
 

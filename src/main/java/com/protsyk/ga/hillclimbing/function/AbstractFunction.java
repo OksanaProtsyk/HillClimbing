@@ -16,7 +16,7 @@ import java.util.Map;
 public abstract class AbstractFunction implements FitnessFunction {
     public  double a = 0;
     public  double b = 1;
-    public  int maxNFE= 2000000;
+    public  int maxNFE= 10000000;
 
     public static int AFTER_COMMA = 3;
     public int spaceSize = 1;
@@ -91,5 +91,4 @@ public abstract class AbstractFunction implements FitnessFunction {
     }
 
 
-    public abstract Map<double[],Double> allMaximas();
 }

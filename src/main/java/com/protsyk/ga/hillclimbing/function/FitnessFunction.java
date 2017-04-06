@@ -3,6 +3,8 @@ package com.protsyk.ga.hillclimbing.function;
 
 import com.protsyk.ga.hillclimbing.model.Chromosome;
 
+import java.util.Map;
+
 /**
  * Created with IntelliJ IDEA.
  * User: okpr0814
@@ -33,6 +35,7 @@ public interface FitnessFunction {
     public double fitTwo(double x,double y);
 
     public int maxNFE();
+    public  Map<double[],Double> allMaximas();
 
 
 
