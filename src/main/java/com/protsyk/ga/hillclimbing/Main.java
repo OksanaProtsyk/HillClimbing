@@ -2,6 +2,7 @@ package com.protsyk.ga.hillclimbing;
 
 import com.protsyk.ga.hillclimbing.function.*;
 import com.protsyk.ga.hillclimbing.model.*;
+import com.protsyk.ga.hillclimbing.statistics.DoubleAlgorithmRunner;
 import com.protsyk.ga.hillclimbing.utils.BinaryPopulationGenerator;
 import com.protsyk.ga.hillclimbing.utils.DoublePopulationGenerator;
 import com.protsyk.ga.hillclimbing.utils.Utils;
@@ -44,14 +45,14 @@ public class Main {
 
         DoublePopulationGenerator doublePopulationGenerator = new DoublePopulationGenerator();
         BinaryPopulationGenerator binaryPopulationGenerator = new BinaryPopulationGenerator();
-        DoubleChomosome[] doublePopluation = doublePopulationGenerator.generatePopulation(1000, deb2Function5);
+        DoubleChomosome[] doublePopluation = doublePopulationGenerator.generatePopulation(1000, deb2Function2);
         BinaryChromosome[] binarypopulation = binaryPopulationGenerator.generatePopulation(10000, shubertFunction);
         BinaryChromosome[] graypopulation = binaryPopulationGenerator.generateGrayPopulation(10000, shubertFunction);
 
         //Utils.printArr(doublePopluation);
         System.out.println("_________________________________");
 
-        DoubleHillClimbing hillClimbing = new DoubleHillClimbing(doublePopluation, 0.1, 0.000001);
+        DoubleHillClimbing hillClimbing = new DoubleHillClimbing(doublePopluation, 0.1, 0.0001);
         // TwoDFisualizer visual = new TwoDFisualizer(doublePopluation[0].getFunction());
         //visual.printPopulation(doublePopluation);
         Map<double[],Double> mapp = deb3Function.allMaximas();
@@ -61,8 +62,10 @@ public class Main {
 
         }
 
-        hillClimbing.run();
+        //hillClimbing.run();
 
+        DoubleAlgorithmRunner runner = new DoubleAlgorithmRunner(deb2Function2,1000,0.1,0.0001);
+        runner.run();
         BinaryHillClimbing binaryHillClimbing = new BinaryHillClimbing(binarypopulation, 1, 0.000000000000000000001);
 
         BinaryHillClimbing grayHillClimbing = new BinaryHillClimbing(graypopulation, 1, 0.000000000000001);

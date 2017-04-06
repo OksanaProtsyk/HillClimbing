@@ -14,4 +14,20 @@ public class AllRunStatistics {
     public double maxPA;
     public double avarageDA;
     public double maxDA;
+
+    @Override
+    public String toString() {
+        return "AllRunStatistics{" +
+                "percentOfAllPeakFound=" + percentOfAllPeakFound +
+                ", avaragePeakFound=" + avaragePeakFound +
+                ", avarageNFE=" + avarageNFE +
+                ", maxNFE=" + maxNFE +
+                ", avaragePR=" + avaragePR +
+                ", maxPR=" + maxPR +
+                ", avaragePA=" + avaragePA +
+                ", maxPA=" + maxPA +
+                ", avarageDA=" + avarageDA +
+                ", maxDA=" + maxDA +
+                '}';
+    }
 }

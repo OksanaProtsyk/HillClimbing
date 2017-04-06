@@ -1,6 +1,7 @@
 package com.protsyk.ga.hillclimbing.model;
 
 import com.protsyk.ga.Calc;
+import com.protsyk.ga.hillclimbing.statistics.SingleRunStatistics;
 import com.protsyk.ga.hillclimbing.utils.Utils;
 
 import javax.swing.*;
@@ -13,9 +14,9 @@ import javax.swing.*;
  * To change this template use File | Settings | File Templates.
  */
 public class DoubleHillClimbing {
-    double initialNeighbourhood;
+    public double initialNeighbourhood;
     double eps;
-    DoubleChomosome[] population;
+    public DoubleChomosome[] population;
 
     public DoubleHillClimbing(DoubleChomosome[] population, double initialNeighbourhood, double eps) {
         this.population = population;
@@ -23,7 +24,7 @@ public class DoubleHillClimbing {
         this.eps = eps;
     }
 
-    public Chromosome[] run() {
+    public SingleRunStatistics run() {
         int NFE =0;
         int dimention = population[0].values.length;
         TwoDFisualizer visual = new TwoDFisualizer(population[0].getFunction());
@@ -86,7 +87,9 @@ public class DoubleHillClimbing {
         }
         System.out.println("Number of fitness function evaluations, NFE = "+NFE);
         DoublePopulationAnalalizer analalizer = new DoublePopulationAnalalizer();
-        System.out.println("Number of peaks:"  + analalizer.numberOfPelk(population,0.1,0.01));
-        return population;
+        SingleRunStatistics statistics = analalizer.analyzeFinalPopulation(population);
+        statistics.NFE=NFE;
+        System.out.println(statistics);
+        return statistics;
     }
 }
