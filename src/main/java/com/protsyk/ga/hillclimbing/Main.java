@@ -65,7 +65,7 @@ public class Main {
         //hillClimbing.run();
 
         DoubleAlgorithmRunner runner = new DoubleAlgorithmRunner(deb2Function2,1000,0.1,0.0001);
-        runner.run();
+        System.out.println(runner.run());
         BinaryHillClimbing binaryHillClimbing = new BinaryHillClimbing(binarypopulation, 1, 0.000000000000000000001);
 
         BinaryHillClimbing grayHillClimbing = new BinaryHillClimbing(graypopulation, 1, 0.000000000000001);

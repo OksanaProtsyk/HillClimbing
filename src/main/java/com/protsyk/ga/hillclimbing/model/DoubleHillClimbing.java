@@ -85,11 +85,11 @@ public class DoubleHillClimbing {
 
 
         }
-        System.out.println("Number of fitness function evaluations, NFE = "+NFE);
+       // System.out.println("Number of fitness function evaluations, NFE = "+NFE);
         DoublePopulationAnalalizer analalizer = new DoublePopulationAnalalizer();
         SingleRunStatistics statistics = analalizer.analyzeFinalPopulation(population);
         statistics.NFE=NFE;
-        System.out.println(statistics);
+       // System.out.println(statistics);
         return statistics;
     }
 }
