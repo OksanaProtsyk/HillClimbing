@@ -39,6 +39,7 @@ public class DoubleHillClimbing {
                 visual3d.printPopulation(population);
             }
             for (int i = 0; i < population.length; i++) {
+
                 int random = Calc.randomInt(0, population[i].values.length);
                 change = true;
                 while (change) {
@@ -46,18 +47,27 @@ public class DoubleHillClimbing {
                     for (int j = random; j < population[i].values.length; j++) {
                         double currentFitness = population[i].fitness();
                         NFE++;
+                        if (NFE>population[0].getFunction().maxNFE()){
+                            break;
+                        }
                         population[i].values[j] = population[i].values[j] + initialNeighbourhood;
                         if (population[i].values[j]>population[i].getFunction().b()){
                             population[i].values[j]=population[i].values[j]-population[i].getFunction().b();
                         }
                         if (population[i].fitness() < currentFitness) {
                             NFE++;
+                            if (NFE>population[0].getFunction().maxNFE()){
+                                break;
+                            }
                             population[i].values[j] = population[i].values[j] - 2 * initialNeighbourhood;
                             if (population[i].values[j]<population[i].getFunction().a()){
                                 population[i].values[j]=population[i].values[j]+population[i].getFunction().b();
                             }
                             if (population[i].fitness() < currentFitness) {
                                 NFE++;
+                                if (NFE>population[0].getFunction().maxNFE()){
+                                    break;
+                                }
                                 population[i].values[j] = population[i].values[j] + initialNeighbourhood;
                                 if (population[i].values[j]>population[i].getFunction().b()){
                                     population[i].values[j]=population[i].values[j]-population[i].getFunction().b();
