@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <module org.jetbrains.idea.maven.project.MavenProjectsManager.isMavenModule="true" type="JAVA_MODULE" version="4">
-  <component name="NewModuleRootManager" LANGUAGE_LEVEL="JDK_1_8" inherit-compiler-output="false">
+  <component name="NewModuleRootManager" inherit-compiler-output="false">
     <output url="file://$MODULE_DIR$/target/classes" />
     <output-test url="file://$MODULE_DIR$/target/test-classes" />
     <content url="file://$MODULE_DIR$">
@@ -9,7 +9,6 @@
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
-    <orderEntry type="library" name="Maven: oracle:com.bea.core.ejbgen_4.0.0.0:12.1.3" level="project" />
     <orderEntry type="library" name="Maven: org.ops4j.pax.logging:pax-logging-api:1.8.1" level="project" />
     <orderEntry type="library" name="Maven: org.slf4j:slf4j-api:1.7.5" level="project" />
     <orderEntry type="library" name="Maven: org.swinglabs:swing-layout:1.0.3" level="project" />
@@ -19,5 +18,11 @@
     <orderEntry type="library" name="Maven: gov.nist.math:jama:1.0.3" level="project" />
     <orderEntry type="library" name="Maven: org.jdom:jdom2:2.0.5" level="project" />
     <orderEntry type="library" name="Maven: oracle:com.bea.core.ejbgen_4.0.0.0:12.1.3" level="project" />
+    <orderEntry type="library" name="Maven: apache:poi:4.0-beta1-20130530" level="project" />
+    <orderEntry type="library" name="Maven: apache:poi-ooxml:4.0-beta1-20130530" level="project" />
+    <orderEntry type="library" name="Maven: apache:poi-scratchpad:4.0-beta1-20130530" level="project" />
+    <orderEntry type="library" name="Maven: apache:poi-ooxml-schemas:4.0-beta1-20130530" level="project" />
+    <orderEntry type="library" name="Maven: apache:poi-excelant:4.0-beta1-20130530" level="project" />
   </component>
 </module>
+
