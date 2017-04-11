@@ -41,11 +41,17 @@ public class Main {
         GriewangkFunction griewangkFunction2 = new GriewangkFunction(2);
         CamelFunction camelFunction = new CamelFunction();
         ShubertFunction shubertFunction2 = new ShubertFunction(2);
+        Deb1Function deb1Function50 = new Deb1Function(50);
+        Deb1Function deb1Function20 = new Deb1Function(20);
+        Deb1Function deb1Function10 = new Deb1Function(10);
+
+
+
 
 
         DoublePopulationGenerator doublePopulationGenerator = new DoublePopulationGenerator();
         BinaryPopulationGenerator binaryPopulationGenerator = new BinaryPopulationGenerator();
-        DoubleChomosome[] doublePopluation = doublePopulationGenerator.generatePopulation(1000, deb2Function2);
+        DoubleChomosome[] doublePopluation = doublePopulationGenerator.generatePopulation(1000, deb1Function50);
         BinaryChromosome[] binarypopulation = binaryPopulationGenerator.generatePopulation(10000, shubertFunction);
         BinaryChromosome[] graypopulation = binaryPopulationGenerator.generateGrayPopulation(10000, shubertFunction);
 
@@ -64,7 +70,7 @@ public class Main {
 
         //hillClimbing.run();
 
-        DoubleAlgorithmRunner runner = new DoubleAlgorithmRunner(deb2Function2,1000,0.1,0.0001);
+        DoubleAlgorithmRunner runner = new DoubleAlgorithmRunner(deb1Function10,1000,0.1,0.0001);
         System.out.println(runner.run());
         BinaryHillClimbing binaryHillClimbing = new BinaryHillClimbing(binarypopulation, 1, 0.000000000000000000001);
 

@@ -1,6 +1,8 @@
 package com.protsyk.ga.hillclimbing.utils;
 
 
+import java.util.List;
+
 /**
  * Created by okpr0814 on 3/23/2017.
  */
@@ -56,6 +58,12 @@ public class Utils {
     public static void printArr(double[] r) {
         for (int i = 0; i < r.length; i++) {
             System.out.print(r[i]);
+            System.out.println();
+        }
+    }
+    public static void printArr(List r) {
+        for (int i = 0; i < r.size(); i++) {
+            System.out.print(r.get(i));
             System.out.println();
         }
     }
