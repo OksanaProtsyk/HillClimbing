@@ -1,5 +1,7 @@
 package com.protsyk.ga.hillclimbing.statistics;
 
+import java.util.List;
+
 /**
  * Created by okpr0814 on 4/7/2017.
  */
@@ -14,6 +16,7 @@ public class AllRunStatistics {
     public double maxPA;
     public double avarageDA;
     public double maxDA;
+    public List<SingleRunStatistics> listOFSinglerRuns;
 
     @Override
     public String toString() {

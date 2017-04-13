@@ -12,7 +12,7 @@ import com.protsyk.ga.hillclimbing.utils.Utils;
  * To change this template use File | Settings | File Templates.
  */
 public class DoubleChomosome implements Chromosome {
-    double[] values;
+   public double[] values;
 
     public FitnessFunction getFunction() {
         return function;
@@ -73,5 +73,11 @@ public class DoubleChomosome implements Chromosome {
             res.append(values[i] + ",");
         }
         return res.toString();
+    }
+    @Override
+    public  DoubleChomosome clone(){
+        DoubleChomosome ch = new DoubleChomosome(this.getFunction(),values.clone());
+        return ch;
+
     }
 }

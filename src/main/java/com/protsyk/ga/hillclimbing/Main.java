@@ -51,7 +51,7 @@ public class Main {
 
         DoublePopulationGenerator doublePopulationGenerator = new DoublePopulationGenerator();
         BinaryPopulationGenerator binaryPopulationGenerator = new BinaryPopulationGenerator();
-        DoubleChomosome[] doublePopluation = doublePopulationGenerator.generatePopulation(1000, deb1Function50);
+        DoubleChomosome[] doublePopluation = doublePopulationGenerator.generatePopulation(1000, deb1Function);
         BinaryChromosome[] binarypopulation = binaryPopulationGenerator.generatePopulation(10000, shubertFunction);
         BinaryChromosome[] graypopulation = binaryPopulationGenerator.generateGrayPopulation(10000, shubertFunction);
 
@@ -70,7 +70,7 @@ public class Main {
 
         //hillClimbing.run();
 
-        DoubleAlgorithmRunner runner = new DoubleAlgorithmRunner(deb1Function10,1000,0.1,0.0001);
+        DoubleAlgorithmRunner runner = new DoubleAlgorithmRunner(deb1Function2,1000,0.1,0.0001);
         System.out.println(runner.run());
         BinaryHillClimbing binaryHillClimbing = new BinaryHillClimbing(binarypopulation, 1, 0.000000000000000000001);
 

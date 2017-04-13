@@ -15,23 +15,25 @@ import javax.swing.*;
  */
 public class DoubleHillClimbing {
     public double initialNeighbourhood;
-    double eps;
     public DoubleChomosome[] population;
+    double eps;
 
     public DoubleHillClimbing(DoubleChomosome[] population, double initialNeighbourhood, double eps) {
         this.population = population;
+
         this.initialNeighbourhood = initialNeighbourhood;
         this.eps = eps;
     }
 
     public SingleRunStatistics run() {
-        int NFE =0;
+
+        int NFE = 0;
         int dimention = population[0].values.length;
         TwoDFisualizer visual = new TwoDFisualizer(population[0].getFunction());
         ThreeDFisualizer visual3d = new ThreeDFisualizer(population[0].getFunction());
 
         boolean change = true;
-        while ((initialNeighbourhood >= eps)&&(NFE<=population[0].getFunction().maxNFE())) {
+        while ((initialNeighbourhood >= eps) && (NFE <= population[0].getFunction().maxNFE())) {
             if (dimention == 1) {
                 visual.printPopulation(population);
             }
@@ -46,31 +48,33 @@ public class DoubleHillClimbing {
                     change = false;
                     for (int j = random; j < population[i].values.length; j++) {
                         double currentFitness = population[i].fitness();
-                        NFE++;
-                        if (NFE>population[0].getFunction().maxNFE()){
+                        if (NFE > population[0].getFunction().maxNFE()) {
                             break;
                         }
+                        NFE++;
                         population[i].values[j] = population[i].values[j] + initialNeighbourhood;
-                        if (population[i].values[j]>population[i].getFunction().b()){
-                            population[i].values[j]=population[i].values[j]-population[i].getFunction().b();
+                        if (population[i].values[j] > population[i].getFunction().b()) {
+                            population[i].values[j] = population[i].values[j] - population[i].getFunction().b();
                         }
                         if (population[i].fitness() < currentFitness) {
-                            NFE++;
-                            if (NFE>population[0].getFunction().maxNFE()){
+                            if (NFE > population[0].getFunction().maxNFE()) {
                                 break;
                             }
+                            NFE++;
+
                             population[i].values[j] = population[i].values[j] - 2 * initialNeighbourhood;
-                            if (population[i].values[j]<population[i].getFunction().a()){
-                                population[i].values[j]=population[i].values[j]+population[i].getFunction().b();
+                            if (population[i].values[j] < population[i].getFunction().a()) {
+                                population[i].values[j] = population[i].values[j] + population[i].getFunction().b();
                             }
                             if (population[i].fitness() < currentFitness) {
-                                NFE++;
-                                if (NFE>population[0].getFunction().maxNFE()){
+                                if (NFE > population[0].getFunction().maxNFE()) {
                                     break;
                                 }
+                                NFE++;
+
                                 population[i].values[j] = population[i].values[j] + initialNeighbourhood;
-                                if (population[i].values[j]>population[i].getFunction().b()){
-                                    population[i].values[j]=population[i].values[j]-population[i].getFunction().b();
+                                if (population[i].values[j] > population[i].getFunction().b()) {
+                                    population[i].values[j] = population[i].values[j] - population[i].getFunction().b();
                                 }
 
                             } else {
@@ -95,11 +99,11 @@ public class DoubleHillClimbing {
 
 
         }
-       // System.out.println("Number of fitness function evaluations, NFE = "+NFE);
+        // System.out.println("Number of fitness function evaluations, NFE = "+NFE);
         DoublePopulationAnalalizer analalizer = new DoublePopulationAnalalizer();
         SingleRunStatistics statistics = analalizer.analyzeFinalPopulation(population);
-        statistics.NFE=NFE;
-       // System.out.println(statistics);
+        statistics.NFE = NFE;
+        //System.out.println(statistics);
         return statistics;
     }
 }

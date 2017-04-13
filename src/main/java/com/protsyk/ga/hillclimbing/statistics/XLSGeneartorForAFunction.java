@@ -69,9 +69,9 @@ public class XLSGeneartorForAFunction {
     static int RUM_NUMBER = 10;
     List<Deb1Function> deb1Functions = new ArrayList();
     int[] spaceSize = {1, 2, 3, 4, 5};
-    int[] populationSizes = {100, 500, 1000, 2000, 5000};
-    double[] epsSizes = {0.1, 0.01, 0.001, 0.0001, 0.00001};
-    double[] neighbourSizes = {1, 0.8, 0.7, 0.5, 0.3, 0.1};
+    int[] populationSizes = {100,500, 1000, 2000, 5000};
+    double[] epsSizes = {0.001, 0.01, 0.001, 0.0001, 0.00001};
+    double[] neighbourSizes = {0.3,0.25, 0.2, 0.1, 0.001};
 
     public void generateXLSX() {
         for (int i = 0; i < spaceSize.length; i++) {
@@ -176,37 +176,66 @@ public class XLSGeneartorForAFunction {
                     cell41.setCellStyle(styleVertical);
                 }
 
-                int rowNumber = 1;
-                for(int i =0; i< populationSizes.length;i++){
-                  for(int j=0; j<epsSizes.length;j++ ){
-                      for (int k=0;k<neighbourSizes.length;k++){
-                          XSSFRow row5 = spreadsheet.createRow((short) 4+rowNumber++);
-                          System.out.println("П____ " +i+","+j+","+k);
+
+            }
+
+            int rowNumber = 1;
+            for (int i = 0; i < populationSizes.length; i++) {
+                for (int j = 0; j < epsSizes.length; j++) {
+                    for (int k = 0; k < neighbourSizes.length; k++) {
+                        XSSFRow row5 = spreadsheet.createRow((short) 4 + rowNumber++);
+
+                        XSSFCell cell51 = row5.createCell(1);
+                        cell51.setCellValue(populationSizes[i]);
+
+                        XSSFCell cell52 = row5.createCell(2);
+                        cell52.setCellValue("Дійсне");
+                        XSSFCell cell53 = row5.createCell(3);
+                        cell53.setCellValue(neighbourSizes[k]);
+                        XSSFCell cell54 = row5.createCell(4);
+                        cell54.setCellValue(epsSizes[j]);
+
+                        XSSFCell cell55 = row5.createCell(5);
+                        cell55.setCellValue("BLLALLLLLLLLLLLLLLLLLLL");
+                        for (int size = 0; size < deb1Functions.size(); size++) {
+
+                            DoubleAlgorithmRunner runner = new DoubleAlgorithmRunner(deb1Functions.get(size), populationSizes[i], neighbourSizes[k], epsSizes[j]);
+                            AllRunStatistics allRunStatistics = runner.run();
+                            short sellStartNumber = 0;
+                            for (int r = 0; r < allRunStatistics.listOFSinglerRuns.size(); r++) {
+                                sellStartNumber = (short) (6 + size * ((NUMBER_OF_CRITERIUMS_FOR_ONE_RUN * RUM_NUMBER + NUMBER_OF_CRITERIUMS_ALL_RUNS)) + r * (NUMBER_OF_CRITERIUMS_FOR_ONE_RUN));
+                                System.out.println(size + " )))  " + sellStartNumber);
+                                // XSSFCell cell56 =
+                                row5.createCell((sellStartNumber)).setCellValue(allRunStatistics.listOFSinglerRuns.get(r).NFE);
+
+                                XSSFCell cell57 = row5.createCell((short) (sellStartNumber + 1));
+                                cell57.setCellValue(allRunStatistics.listOFSinglerRuns.get(r).numberOfPeaks);
+
+                                XSSFCell cell58 = row5.createCell((short) (sellStartNumber + 2));
+                                cell58.setCellValue(allRunStatistics.listOFSinglerRuns.get(r).peakRatio);
+
+                                XSSFCell cell59 = row5.createCell((short) (sellStartNumber + 3));
+                                cell59.setCellValue(allRunStatistics.listOFSinglerRuns.get(r).peakAccurancy);
+
+                                XSSFCell cell510 = row5.createCell((short) (sellStartNumber + 4));
+                                cell510.setCellValue(allRunStatistics.listOFSinglerRuns.get(r).distanceAccurancy);
+
+                                //XSSFCell cell511 = row5.createCell(sellStartNumber);
+
+                                //XSSFCell cell512 = row5.createCell(sellStartNumber);
 
 
-                          XSSFCell cell51 = row5.createCell(1);
-                          cell51.setCellValue(populationSizes[i]);
-
-                          XSSFCell cell52 = row5.createCell(2);
-                          cell52.setCellValue("Дійсне");
-                          XSSFCell cell53 = row5.createCell(3);
-                          cell53.setCellValue(neighbourSizes[k]);
-                          XSSFCell cell54 = row5.createCell(4);
-                          cell54.setCellValue(epsSizes[j]);
-
-                          XSSFCell cell55 = row5.createCell(5);
-
-                      }
-                  }
-                 }
+                            }
+                        }
 
 
-
+                    }
+                }
             }
 
 
             FileOutputStream out = new FileOutputStream(
-                    new File("Writesheet.xlsx"));
+                    new File("Deb1Function.xlsx"));
             workbook.write(out);
             out.close();
             System.out.println(

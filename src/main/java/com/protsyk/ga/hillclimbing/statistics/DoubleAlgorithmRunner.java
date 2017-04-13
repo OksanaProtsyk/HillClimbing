@@ -4,6 +4,7 @@ import com.protsyk.ga.hillclimbing.function.FitnessFunction;
 import com.protsyk.ga.hillclimbing.model.DoubleChomosome;
 import com.protsyk.ga.hillclimbing.model.DoubleHillClimbing;
 import com.protsyk.ga.hillclimbing.utils.DoublePopulationGenerator;
+import com.protsyk.ga.hillclimbing.utils.Utils;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -18,7 +19,7 @@ public class DoubleAlgorithmRunner {
     public double neighbourSize;
     public double eps;
     public static int NUMBER_OF_RUNS = 10;
-    DoubleHillClimbing hillClimbing;
+    //DoubleHillClimbing hillClimbing;
 
     public DoubleAlgorithmRunner(FitnessFunction function, int populationSize, double neighbourSize, double eps) {
         this.function = function;
@@ -27,20 +28,34 @@ public class DoubleAlgorithmRunner {
         this.eps = eps;
         DoublePopulationGenerator doublePopulationGenerator = new DoublePopulationGenerator();
         this.population = doublePopulationGenerator.generatePopulation(populationSize,function);
-         hillClimbing = new DoubleHillClimbing(this.population, neighbourSize, eps);
+         //hillClimbing = new DoubleHillClimbing(this.population, neighbourSize, eps);
 
     }
 
     public AllRunStatistics run (){
         List<SingleRunStatistics> statisticsList = new ArrayList<>();
         for (int i=0;i<NUMBER_OF_RUNS;i++){
+
+            DoubleChomosome[] temp = new DoubleChomosome[population.length];
+            for (int j=0;j<population.length;j++){
+                double[] val = new double[population[j].getValues().length];
+                for (int k=0;k<val.length;k++){
+                    val[k] = population[j].values[k];
+                }
+                temp[j] = new DoubleChomosome(population[j].getFunction(),val);
+            }
+            DoubleHillClimbing  hillClimbing = new DoubleHillClimbing(this.population, neighbourSize, eps);
+            System.out.println("POOOOOOOOOOOOOOOOOO");
+            this.population = temp;
+            Utils.printArr(this.population);
             SingleRunStatistics st = hillClimbing.run();
             statisticsList.add(st);
             System.out.println(st);
-            hillClimbing.population=this.population;
-            hillClimbing.initialNeighbourhood=neighbourSize;
+           // hillClimbing.population=this.population;
+          // hillClimbing.initialNeighbourhood=this.neighbourSize;
         }
         AllRunStatistics statistics = new AllRunStatistics();
+        statistics.listOFSinglerRuns = statisticsList;
         int successruns =0;
         int peakSum=0;
         double NFEsum =0;
@@ -87,6 +102,11 @@ public class DoubleAlgorithmRunner {
         statistics.avaragePA = PAsum/statisticsList.size();
         statistics.maxPA=maxPA;
 
+
+
+
         return statistics;
     }
+
+
 }
