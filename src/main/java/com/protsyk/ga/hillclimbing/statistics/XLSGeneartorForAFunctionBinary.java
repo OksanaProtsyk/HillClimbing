@@ -69,10 +69,10 @@ public class XLSGeneartorForAFunctionBinary {
     static int NUMBER_OF_CRITERIUMS_ALL_RUNS = 10;
     static int RUM_NUMBER = 10;
     List<Deb1Function> deb1Functions = new ArrayList();
-    int[] spaceSize = {1, 2};
+    int[] spaceSize = {1, 2,3,4,5};
     int[] populationSizes = {1000};
-    double[] epsSizes = {0.001};
-    double[] neighbourSizes = {0.1};
+    double[] epsSizes = {0.001, 0.0001, 0.00001};
+    double[] neighbourSizes = {0.1,0.2, 0.3};
 
     public void generateXLSX() {
         for (int i = 0; i < spaceSize.length; i++) {
