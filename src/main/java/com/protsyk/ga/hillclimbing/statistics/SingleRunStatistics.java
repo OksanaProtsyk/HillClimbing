@@ -39,6 +39,9 @@ public class SingleRunStatistics {
         return res;
     }
 
+
+
+
     public String listOfExtremaForOptima(){
         String res = "";
         for (Optima o: optimas){

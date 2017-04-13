@@ -117,4 +117,13 @@ public class Utils {
     public static int flip(int c){
         return (c == 0)? 1: 0;
     }
+
+
+    public static String printBinary(int[] bits){
+        StringBuffer res = new StringBuffer();
+        for (int i = 0; i < bits.length; i++) {
+            res.append(bits[i]);
+        }
+        return res.toString();
+    }
 }

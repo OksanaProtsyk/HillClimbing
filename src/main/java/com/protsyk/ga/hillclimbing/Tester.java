@@ -1,6 +1,7 @@
 package com.protsyk.ga.hillclimbing;
 
 import com.protsyk.ga.hillclimbing.statistics.XLSGeneartorForAFunction;
+import com.protsyk.ga.hillclimbing.statistics.XLSGeneartorForAFunctionBinary;
 
 /**
  * Created with IntelliJ IDEA.
@@ -13,5 +14,8 @@ public class Tester {
     public static void main(String[] arg){
         XLSGeneartorForAFunction gen = new XLSGeneartorForAFunction();
         gen.generateXLSX();
+
+       // XLSGeneartorForAFunctionBinary gen = new XLSGeneartorForAFunctionBinary();
+       // gen.generateXLSX();
     }
 }

@@ -14,7 +14,7 @@ import java.util.Arrays;
  * To change this template use File | Settings | File Templates.
  */
 public class BinaryChromosome implements Chromosome {
-    int[] bits;
+    public int[] bits;
     FitnessFunction function;
 
     public BinaryChromosome(FitnessFunction f) {
@@ -24,6 +24,12 @@ public class BinaryChromosome implements Chromosome {
         for (int i = 0; i < paramCodeSize; i++) {
             bits[i] = Calc.random() > 0.5 ? 1 : 0;
         }
+        this.function = f;
+    }
+
+    public BinaryChromosome(FitnessFunction f,int[] bits) {
+        int paramCodeSize = f.spaceSize() * Utils.getM(f.a(), f.b(), f.after_comma());
+        this.bits = bits;
         this.function = f;
     }
 

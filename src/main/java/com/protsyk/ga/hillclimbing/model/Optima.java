@@ -1,5 +1,7 @@
 package com.protsyk.ga.hillclimbing.model;
 
+import com.protsyk.ga.hillclimbing.utils.Utils;
+
 import java.util.Arrays;
 
 /**
@@ -40,4 +42,6 @@ public class Optima {
         }
         return res;
     }
+
+
 }
