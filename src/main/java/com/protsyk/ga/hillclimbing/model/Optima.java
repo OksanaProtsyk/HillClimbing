@@ -31,4 +31,13 @@ public class Optima {
                 ", actualExtrama=" + actualExtrama +
                 '}';
     }
+
+    public String getPointsCoordinates(){
+        String res = "";
+        for (double d:pointcordinatesFound){
+            res+=d;
+            res+=",";
+        }
+        return res;
+    }
 }

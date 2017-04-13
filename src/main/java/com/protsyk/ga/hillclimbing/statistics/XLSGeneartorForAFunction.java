@@ -68,10 +68,10 @@ public class XLSGeneartorForAFunction {
     static int NUMBER_OF_CRITERIUMS_ALL_RUNS = 10;
     static int RUM_NUMBER = 10;
     List<Deb1Function> deb1Functions = new ArrayList();
-    int[] spaceSize = {1, 2, 3, 4, 5};
-    int[] populationSizes = {100,500, 1000, 2000, 5000};
-    double[] epsSizes = {0.001, 0.01, 0.001, 0.0001, 0.00001};
-    double[] neighbourSizes = {0.3,0.25, 0.2, 0.1, 0.001};
+    int[] spaceSize = {1, 2,3,4,5};
+    int[] populationSizes = {1000};
+    double[] epsSizes = {0.001, 0.0001, 0.00001};
+    double[] neighbourSizes = {0.1,0.2, 0.3};
 
     public void generateXLSX() {
         for (int i = 0; i < spaceSize.length; i++) {
@@ -171,6 +171,7 @@ public class XLSGeneartorForAFunction {
                 ));
 
                 for (int p = 0; p < criteriaNamesForAllRuns.size(); p++) {
+                    System.out.println("+++" + (6 + (m + 1) * ((NUMBER_OF_CRITERIUMS_FOR_ONE_RUN * RUM_NUMBER + NUMBER_OF_CRITERIUMS_ALL_RUNS)) - NUMBER_OF_CRITERIUMS_ALL_RUNS + p));
                     XSSFCell cell41 = row4.createCell(6 + (m + 1) * ((NUMBER_OF_CRITERIUMS_FOR_ONE_RUN * RUM_NUMBER + NUMBER_OF_CRITERIUMS_ALL_RUNS)) - NUMBER_OF_CRITERIUMS_ALL_RUNS + p);
                     cell41.setCellValue(criteriaNamesForAllRuns.get(p));
                     cell41.setCellStyle(styleVertical);
@@ -196,7 +197,6 @@ public class XLSGeneartorForAFunction {
                         cell54.setCellValue(epsSizes[j]);
 
                         XSSFCell cell55 = row5.createCell(5);
-                        cell55.setCellValue("BLLALLLLLLLLLLLLLLLLLLL");
                         for (int size = 0; size < deb1Functions.size(); size++) {
 
                             DoubleAlgorithmRunner runner = new DoubleAlgorithmRunner(deb1Functions.get(size), populationSizes[i], neighbourSizes[k], epsSizes[j]);
@@ -204,8 +204,6 @@ public class XLSGeneartorForAFunction {
                             short sellStartNumber = 0;
                             for (int r = 0; r < allRunStatistics.listOFSinglerRuns.size(); r++) {
                                 sellStartNumber = (short) (6 + size * ((NUMBER_OF_CRITERIUMS_FOR_ONE_RUN * RUM_NUMBER + NUMBER_OF_CRITERIUMS_ALL_RUNS)) + r * (NUMBER_OF_CRITERIUMS_FOR_ONE_RUN));
-                                System.out.println(size + " )))  " + sellStartNumber);
-                                // XSSFCell cell56 =
                                 row5.createCell((sellStartNumber)).setCellValue(allRunStatistics.listOFSinglerRuns.get(r).NFE);
 
                                 XSSFCell cell57 = row5.createCell((short) (sellStartNumber + 1));
@@ -220,12 +218,40 @@ public class XLSGeneartorForAFunction {
                                 XSSFCell cell510 = row5.createCell((short) (sellStartNumber + 4));
                                 cell510.setCellValue(allRunStatistics.listOFSinglerRuns.get(r).distanceAccurancy);
 
-                                //XSSFCell cell511 = row5.createCell(sellStartNumber);
+                                XSSFCell cell511 = row5.createCell(sellStartNumber + 5);
+                                cell511.setCellValue(allRunStatistics.listOFSinglerRuns.get(r).listOfValuesForOptima());
 
-                                //XSSFCell cell512 = row5.createCell(sellStartNumber);
+                                XSSFCell cell512 = row5.createCell(sellStartNumber + 6);
+                                cell512.setCellValue(allRunStatistics.listOFSinglerRuns.get(r).listOfExtremaForOptima());
 
 
                             }
+                            short index = (short) (6 + (size + 1) * (NUMBER_OF_CRITERIUMS_FOR_ONE_RUN * RUM_NUMBER + NUMBER_OF_CRITERIUMS_ALL_RUNS) - NUMBER_OF_CRITERIUMS_ALL_RUNS);
+                            XSSFCell cell5a = row5.createCell(index);
+                            System.out.println(size + " )))  " + index);
+
+                            cell5a.setCellValue(allRunStatistics.percentOfAllPeakFound);
+                            XSSFCell cell5b = row5.createCell(index + 1);
+                            cell5b.setCellValue(allRunStatistics.avaragePeakFound);
+                            XSSFCell cell5c = row5.createCell(index + 2);
+                            cell5c.setCellValue(allRunStatistics.avarageNFE);
+                            XSSFCell cell5d = row5.createCell(index + 3);
+                            cell5d.setCellValue(allRunStatistics.maxNFE);
+                            XSSFCell cell5e = row5.createCell(index + 4);
+                            cell5e.setCellValue(allRunStatistics.avaragePR);
+                            XSSFCell cell5i = row5.createCell(index + 5);
+                            cell5i.setCellValue(allRunStatistics.maxPR);
+                            XSSFCell cell5j = row5.createCell(index + 6);
+                            cell5j.setCellValue(allRunStatistics.avaragePA);
+                            XSSFCell cell5k = row5.createCell(index + 7);
+                            cell5k.setCellValue(allRunStatistics.maxPA);
+
+                            XSSFCell cell5l = row5.createCell(index + 8);
+                            cell5l.setCellValue(allRunStatistics.avarageDA);
+                            XSSFCell cell5m = row5.createCell(index + 9);
+                            cell5m.setCellValue(allRunStatistics.maxDA);
+
+
                         }
 
 

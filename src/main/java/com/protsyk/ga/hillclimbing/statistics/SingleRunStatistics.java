@@ -29,4 +29,23 @@ public class SingleRunStatistics {
                 ", distanceAccurancy=" + distanceAccurancy +
                 '}';
     }
+
+    public String listOfValuesForOptima(){
+        String res = "";
+        for (Optima o: optimas){
+            res+=o.getPointsCoordinates();
+            res+=";";
+        }
+        return res;
+    }
+
+    public String listOfExtremaForOptima(){
+        String res = "";
+        for (Optima o: optimas){
+            res+=o.extremaFound;
+            res+=";";
+        }
+        return res;
+    }
+
 }
