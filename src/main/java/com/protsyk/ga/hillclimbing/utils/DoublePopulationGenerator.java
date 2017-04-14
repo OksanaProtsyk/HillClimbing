@@ -1,8 +1,7 @@
 package com.protsyk.ga.hillclimbing.utils;
 
 import com.protsyk.ga.hillclimbing.function.FitnessFunction;
-import com.protsyk.ga.hillclimbing.model.Chromosome;
-import com.protsyk.ga.hillclimbing.model.DoubleChomosome;
+import com.protsyk.ga.hillclimbing.fenotype.DoubleChomosome;
 
 /**
  * Created with IntelliJ IDEA.

@@ -1,7 +1,8 @@
-package com.protsyk.ga.hillclimbing.statistics;
+package com.protsyk.ga.hillclimbing.fenotype;
 
+import com.protsyk.ga.hillclimbing.fenotype.DoubleAlgorithmRunner;
 import com.protsyk.ga.hillclimbing.function.Deb1Function;
-import com.protsyk.ga.hillclimbing.function.FitnessFunction;
+import com.protsyk.ga.hillclimbing.statistics.AllRunStatistics;
 import org.apache.poi.ss.usermodel.CellStyle;
 import org.apache.poi.ss.util.CellRangeAddress;
 import org.apache.poi.xssf.usermodel.XSSFCell;
@@ -42,8 +43,10 @@ public class XLSGeneartorForAFunction {
         criteriaNamesForSingleRun.add("Effective number of peaks maintained");
         criteriaNamesForSingleRun.add("Peak accuracy");
         criteriaNamesForSingleRun.add("Distance accuracy");
-        criteriaNamesForSingleRun.add("Extrema Data");
+        criteriaNamesForSingleRun.add("Extrema Data Found and Real");
         criteriaNamesForSingleRun.add("Extrema Value Found");
+        criteriaNamesForSingleRun.add("Number of actuall extrema");
+        criteriaNamesForSingleRun.add("Number of actuall extrema");
 
     }
 
@@ -64,8 +67,8 @@ public class XLSGeneartorForAFunction {
 
     }
 
-    static int NUMBER_OF_CRITERIUMS_FOR_ONE_RUN = 7;
-    static int NUMBER_OF_CRITERIUMS_ALL_RUNS = 10;
+    static int NUMBER_OF_CRITERIUMS_FOR_ONE_RUN = criteriaNamesForSingleRun.size();
+    static int NUMBER_OF_CRITERIUMS_ALL_RUNS = criteriaNamesForAllRuns.size();
     static int RUM_NUMBER = 10;
     List<Deb1Function> deb1Functions = new ArrayList();
     int[] spaceSize = {1, 2,3,4,5};
@@ -261,7 +264,7 @@ public class XLSGeneartorForAFunction {
 
 
             FileOutputStream out = new FileOutputStream(
-                    new File("Deb1Function.xlsx"));
+                    new File("Deb1Function10000.xlsx"));
             workbook.write(out);
             out.close();
             System.out.println(

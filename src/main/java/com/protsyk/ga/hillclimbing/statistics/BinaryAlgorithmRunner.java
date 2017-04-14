@@ -7,10 +7,7 @@ package com.protsyk.ga.hillclimbing.statistics;
 import com.protsyk.ga.hillclimbing.function.FitnessFunction;
 import com.protsyk.ga.hillclimbing.model.BinaryChromosome;
 import com.protsyk.ga.hillclimbing.model.BinaryHillClimbing;
-import com.protsyk.ga.hillclimbing.model.DoubleChomosome;
-import com.protsyk.ga.hillclimbing.model.DoubleHillClimbing;
 import com.protsyk.ga.hillclimbing.utils.BinaryPopulationGenerator;
-import com.protsyk.ga.hillclimbing.utils.DoublePopulationGenerator;
 import com.protsyk.ga.hillclimbing.utils.Utils;
 
 import java.util.ArrayList;

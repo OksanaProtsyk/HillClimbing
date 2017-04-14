@@ -1,7 +1,6 @@
-package com.protsyk.ga.hillclimbing;
+package com.protsyk.ga.hillclimbing.runs;
 
-import com.protsyk.ga.hillclimbing.statistics.XLSGeneartorForAFunction;
-import com.protsyk.ga.hillclimbing.statistics.XLSGeneartorForAFunctionBinary;
+import com.protsyk.ga.hillclimbing.fenotype.XLSGeneartorForAFunction;
 
 /**
  * Created with IntelliJ IDEA.

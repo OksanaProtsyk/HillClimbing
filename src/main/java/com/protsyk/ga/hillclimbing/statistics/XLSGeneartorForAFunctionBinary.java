@@ -1,6 +1,9 @@
 package com.protsyk.ga.hillclimbing.statistics;
 
 import com.protsyk.ga.hillclimbing.function.Deb1Function;
+import com.protsyk.ga.hillclimbing.function.Deb2Function;
+import com.protsyk.ga.hillclimbing.function.Deb3Function;
+import com.protsyk.ga.hillclimbing.function.Deb4Function;
 import com.protsyk.ga.hillclimbing.model.Optima;
 import com.protsyk.ga.hillclimbing.utils.Utils;
 import org.apache.poi.ss.usermodel.CellStyle;
@@ -68,7 +71,7 @@ public class XLSGeneartorForAFunctionBinary {
     static int NUMBER_OF_CRITERIUMS_FOR_ONE_RUN = 7;
     static int NUMBER_OF_CRITERIUMS_ALL_RUNS = 10;
     static int RUM_NUMBER = 10;
-    List<Deb1Function> deb1Functions = new ArrayList();
+    List<Deb4Function> deb1Functions = new ArrayList();
     int[] spaceSize = {1, 2,3,4,5};
     int[] populationSizes = {1000};
     double[] epsSizes = {0.001, 0.0001, 0.00001};
@@ -76,10 +79,10 @@ public class XLSGeneartorForAFunctionBinary {
 
     public void generateXLSX() {
         for (int i = 0; i < spaceSize.length; i++) {
-            deb1Functions.add(new Deb1Function(spaceSize[i]));
+            deb1Functions.add(new Deb4Function(spaceSize[i]));
         }
 
-        for (Deb1Function function : deb1Functions) {
+        for (Deb4Function function : deb1Functions) {
               /*for(int i =0; i< populationSizes.length;i++){
                   for(int j=0; j<epsSizes.length;j++ ){
                       for (int k=0;k<neighbourSizes.length;k++){
@@ -271,7 +274,7 @@ public class XLSGeneartorForAFunctionBinary {
 
 
             FileOutputStream out = new FileOutputStream(
-                    new File("Deb1FunctionBinary.xlsx"));
+                    new File("Deb4FunctionBinary.xlsx"));
             workbook.write(out);
             out.close();
             System.out.println(

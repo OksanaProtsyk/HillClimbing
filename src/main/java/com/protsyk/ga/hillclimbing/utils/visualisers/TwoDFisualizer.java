@@ -1,4 +1,4 @@
-package com.protsyk.ga.hillclimbing.model;
+package com.protsyk.ga.hillclimbing.utils.visualisers;
 
 /**
  * Created with IntelliJ IDEA.
@@ -9,7 +9,7 @@ package com.protsyk.ga.hillclimbing.model;
  */
 
 import com.protsyk.ga.hillclimbing.function.FitnessFunction;
-import com.protsyk.ga.hillclimbing.utils.Utils;
+import com.protsyk.ga.hillclimbing.model.Chromosome;
 import org.math.plot.Plot2DPanel;
 
 import javax.swing.*;

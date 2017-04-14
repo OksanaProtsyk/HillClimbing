@@ -65,4 +65,9 @@ public class Deb3Function extends AbstractFunction {
         }
         return map;
     }
+
+    @Override
+    public int numberOfExtremas() {
+        return (int) Math.pow(5, spaceSize);
+    }
 }

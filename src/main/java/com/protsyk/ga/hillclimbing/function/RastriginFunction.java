@@ -54,4 +54,9 @@ public class RastriginFunction extends AbstractFunction {
     public Map<double[], Double> allMaximas() {
         return null;
     }
+
+    @Override
+    public int numberOfExtremas() {
+        return 0;  //To change body of implemented methods use File | Settings | File Templates.
+    }
 }

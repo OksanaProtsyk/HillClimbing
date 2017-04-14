@@ -1,4 +1,4 @@
-package com.protsyk.ga.hillclimbing;
+package com.protsyk.ga.hillclimbing.runs;
 
 import com.protsyk.ga.hillclimbing.statistics.XLSGeneartorForAFunctionBinary;
 

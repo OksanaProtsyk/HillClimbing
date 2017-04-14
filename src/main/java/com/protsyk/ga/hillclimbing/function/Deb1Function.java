@@ -45,7 +45,6 @@ public class Deb1Function extends AbstractFunction {
         return 0.5 * (Math.pow(Math.sin(5 * x * Math.PI), 6) + Math.pow(Math.sin(5 * y * Math.PI), 6));
     }
 
-
     @Override
     public Map<double[], Double> allMaximas() {
         Map<double[], Double> map = new HashMap<>();
@@ -67,6 +66,11 @@ public class Deb1Function extends AbstractFunction {
             map.put(current, fit(current));
         }
         return map;
+    }
+
+    @Override
+    public int numberOfExtremas() {
+        return (int) Math.pow(5, spaceSize);
     }
 
 }

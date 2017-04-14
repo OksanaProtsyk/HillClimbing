@@ -1,12 +1,11 @@
-package com.protsyk.ga.hillclimbing.model;
+package com.protsyk.ga.hillclimbing.utils.visualisers;
 
 import com.protsyk.ga.hillclimbing.function.FitnessFunction;
+import com.protsyk.ga.hillclimbing.model.Chromosome;
 import org.math.plot.Plot2DPanel;
 
 import javax.swing.*;
 import java.awt.*;
-import java.util.function.Function;
-import  org.jdom2.*;
 
 /**
  * Created with IntelliJ IDEA.

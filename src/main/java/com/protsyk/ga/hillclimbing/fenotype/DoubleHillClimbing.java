@@ -1,10 +1,9 @@
-package com.protsyk.ga.hillclimbing.model;
+package com.protsyk.ga.hillclimbing.fenotype;
 
 import com.protsyk.ga.Calc;
+import com.protsyk.ga.hillclimbing.utils.visualisers.ThreeDFisualizer;
+import com.protsyk.ga.hillclimbing.utils.visualisers.TwoDFisualizer;
 import com.protsyk.ga.hillclimbing.statistics.SingleRunStatistics;
-import com.protsyk.ga.hillclimbing.utils.Utils;
-
-import javax.swing.*;
 
 /**
  * Created with IntelliJ IDEA.

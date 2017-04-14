@@ -1,8 +1,10 @@
-package com.protsyk.ga.hillclimbing;
+package com.protsyk.ga.hillclimbing.runs;
 
+import com.protsyk.ga.hillclimbing.fenotype.DoubleChomosome;
+import com.protsyk.ga.hillclimbing.fenotype.DoubleHillClimbing;
 import com.protsyk.ga.hillclimbing.function.*;
 import com.protsyk.ga.hillclimbing.model.*;
-import com.protsyk.ga.hillclimbing.statistics.DoubleAlgorithmRunner;
+import com.protsyk.ga.hillclimbing.fenotype.DoubleAlgorithmRunner;
 import com.protsyk.ga.hillclimbing.utils.BinaryPopulationGenerator;
 import com.protsyk.ga.hillclimbing.utils.DoublePopulationGenerator;
 import com.protsyk.ga.hillclimbing.utils.Utils;

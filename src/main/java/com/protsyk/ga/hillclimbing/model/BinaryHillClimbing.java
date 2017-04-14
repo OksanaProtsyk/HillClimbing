@@ -2,6 +2,8 @@ package com.protsyk.ga.hillclimbing.model;
 
 import com.protsyk.ga.Calc;
 import com.protsyk.ga.hillclimbing.statistics.SingleRunStatistics;
+import com.protsyk.ga.hillclimbing.utils.visualisers.ThreeDFisualizer;
+import com.protsyk.ga.hillclimbing.utils.visualisers.TwoDFisualizer;
 
 import javax.swing.*;
 
@@ -33,10 +35,10 @@ public class BinaryHillClimbing {
 
         while (initialNeighbourhood > eps&&(NFE<=population[0].getFunction().maxNFE())) {
             if (dimention == 1) {
-                visual.printPopulation(population);
+              //  visual.printPopulation(population);
             }
             if (dimention == 2) {
-                visual3d.printPopulation(population);
+              //  visual3d.printPopulation(population);
             }
             for (int i = 0; i < population.length; i++) {
                 int start = Calc.randomInt(0, population[i].bits.length);
