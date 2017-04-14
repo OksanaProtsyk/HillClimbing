@@ -1,6 +1,7 @@
 package com.protsyk.ga.hillclimbing.function;
 
 
+import java.util.HashMap;
 import java.util.Map;
 
 /**
@@ -52,6 +53,12 @@ public class RastriginFunction extends AbstractFunction {
 
     @Override
     public Map<double[], Double> allMaximas() {
-        return null;
+        Map<double[],Double> map = new HashMap<>();
+        double[] arr = new double[spaceSize];
+        for (int i=0;i<spaceSize;i++){
+            arr[i]=0;
+        }
+        map.put(arr,fit(arr));
+        return map;
     }
 }
