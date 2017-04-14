@@ -53,28 +53,29 @@ public class Main {
 
         DoublePopulationGenerator doublePopulationGenerator = new DoublePopulationGenerator();
         BinaryPopulationGenerator binaryPopulationGenerator = new BinaryPopulationGenerator();
-        DoubleChomosome[] doublePopluation = doublePopulationGenerator.generatePopulation(1000, deb1Function);
+        DoubleChomosome[] doublePopluation = doublePopulationGenerator.generatePopulation(1000, griewangkFunction2);
         BinaryChromosome[] binarypopulation = binaryPopulationGenerator.generatePopulation(10000, shubertFunction);
         BinaryChromosome[] graypopulation = binaryPopulationGenerator.generateGrayPopulation(10000, shubertFunction);
 
         //Utils.printArr(doublePopluation);
         System.out.println("_________________________________");
 
-        DoubleHillClimbing hillClimbing = new DoubleHillClimbing(doublePopluation, 0.1, 0.0001);
+        DoubleHillClimbing hillClimbing = new DoubleHillClimbing(doublePopluation, 0.1, 0.00001);
         // TwoDFisualizer visual = new TwoDFisualizer(doublePopluation[0].getFunction());
         //visual.printPopulation(doublePopluation);
-        Map<double[],Double> mapp = deb3Function.allMaximas();
+       /* Map<double[],Double> mapp = deb3Function.allMaximas();
         for (double[] l: mapp.keySet()){
             Utils.printArr(l);
             System.out.println("Va;;" + mapp.get(l));
 
         }
 
-        //hillClimbing.run();
+*/
+        hillClimbing.run();
 
-        DoubleAlgorithmRunner runner = new DoubleAlgorithmRunner(deb1Function2,1000,0.1,0.0001);
-        System.out.println(runner.run());
-        BinaryHillClimbing binaryHillClimbing = new BinaryHillClimbing(binarypopulation, 1, 0.000000000000000000001);
+       // DoubleAlgorithmRunner runner = new DoubleAlgorithmRunner(deb1Function2,1000,0.1,0.0001);
+       // System.out.println(runner.run());
+        //BinaryHillClimbing binaryHillClimbing = new BinaryHillClimbing(binarypopulation, 1, 0.000000000000000000001);
 
         BinaryHillClimbing grayHillClimbing = new BinaryHillClimbing(graypopulation, 1, 0.000000000000001);
         // BinaryChromosome[] finalPopulatin =  binaryHillClimbing.run();

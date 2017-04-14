@@ -1,5 +1,6 @@
 package com.protsyk.ga.hillclimbing.function;
 
+import java.util.HashMap;
 import java.util.Map;
 
 /**
@@ -43,7 +44,22 @@ public class CamelFunction extends AbstractFunction {
 
     @Override
     public Map<double[], Double> allMaximas() {
-        return null;
+        Map<double[],Double> map = new HashMap<>();
+        double[] a1 = {-0.0898,0.7126};
+        map.put(a1,fit(a1));
+        double[] a2 = {0.0898,-0.7126};
+        map.put(a2,fit(a2));
+        double[] a3 = {-1.7036,0.7961};
+        map.put(a3,fit(a3));
+
+        double[] a4 = {1.7036,-0.7961};
+        map.put(a4,fit(a4));
+
+        double[] a5 = {-1.6071,-0.5687};
+        map.put(a5,fit(a5));
+        double[] a6 = {1.6071,0.5687};
+        map.put(a6,fit(a6));
+        return map;
     }
 
     @Override
