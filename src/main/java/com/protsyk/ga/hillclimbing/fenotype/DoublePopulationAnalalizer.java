@@ -18,18 +18,26 @@ import java.util.Map;
  */
 public class DoublePopulationAnalalizer {
     public final static double DELTA = 0.1;
-    public final static double OMEGA = 0.1;
+    public final static double OMEGA = 1;
 
     public SingleRunStatistics analyzeFinalPopulation(DoubleChomosome[] population) {
         SingleRunStatistics singleRunStatistics = new SingleRunStatistics();
         //for function we now allexpremas. if not values is empty
-        singleRunStatistics.numberOfPeaks = (population[0].getFunction().allMaximas()==null)?0: numberOfPeak(population, DELTA, OMEGA);
+        singleRunStatistics.numberOfPeaks = getSeeds(population, OMEGA).size();
+        singleRunStatistics.numberolGlobalPeaks = getSeeds(population, OMEGA).size();
         singleRunStatistics.numberOfPeaksToFound = population[0].getFunction().numberOfExtremas();
+        singleRunStatistics.numberolGlobalPeaksToFound = population[0].getFunction().numberOfGlobalMaxima();
         singleRunStatistics.peakRatio = singleRunStatistics.numberOfPeaks / singleRunStatistics.numberOfPeaksToFound;
+        singleRunStatistics.globalPeakRatio = singleRunStatistics.numberolGlobalPeaks / singleRunStatistics.numberolGlobalPeaksToFound;
         singleRunStatistics.distanceAccurancy = distanceAccuracy(population);
+        singleRunStatistics.globalDistanceAccurancy = globalDistanceAccuracy(population);
+
         singleRunStatistics.peakAccurancy = peakAccurancy(population);
+        singleRunStatistics.globalPeakAccurancy = globalPeakAccurancy(population);
+
+
         singleRunStatistics.optimas = listOfOptimasforKnownValues(population, DELTA, OMEGA);
-        singleRunStatistics.foundseeds = getSeeds(population,OMEGA);
+        singleRunStatistics.foundseeds = getSeeds(population, OMEGA);
         return singleRunStatistics;
 
     }
@@ -62,6 +70,9 @@ public class DoublePopulationAnalalizer {
     }
 
     public List<Optima> listOfOptimasforKnownValues(DoubleChomosome[] population, double delta, double omega) {
+        if (population[0].getFunction().allMaximas()==null){
+            return null;
+        }
         List<Optima> optimasFound = new ArrayList<Optima>();
         double fitness = 0;
         double[] values = null;
@@ -99,14 +110,18 @@ public class DoublePopulationAnalalizer {
         for (DoubleChomosome ch : population) {
             notanalyzed.add(ch);
         }
-        DoubleChomosome x = getBest(notanalyzed);
-        notanalyzed.remove(x);
-        boolean found = false;
-        for (double[] val : seeds.keySet()) {
-            if (euclide(val, x.values) <= omega) {
-                found = true;
-            } else {
+        while (!notanalyzed.isEmpty()) {
+            DoubleChomosome x = getBest(notanalyzed);
+            notanalyzed.remove(x);
+            boolean found = false;
+            for (double[] val : seeds.keySet()) {
+                if (euclide(val, x.values) <= omega) {
+                    found = true;
+                }
+            }
+            if (!found) {
                 seeds.put(x.values, x.fitness());
+
             }
         }
 
@@ -126,6 +141,9 @@ public class DoublePopulationAnalalizer {
     }
 
     public double peakAccurancy(DoubleChomosome[] population) {
+        if (population[0].getFunction().allMaximas() == null) {
+            return Double.NaN;
+        }
         Map<double[], Double> extremas = population[0].getFunction().allMaximas();
         double accurancy = 0;
         for (double[] d : extremas.keySet()) {
@@ -134,8 +152,35 @@ public class DoublePopulationAnalalizer {
         return accurancy;
     }
 
+    public double globalPeakAccurancy(DoubleChomosome[] population) {
+        if (population[0].getFunction().globalMaxima() == null) {
+            return Double.NaN;
+        }
+        Map<double[], Double> extremas = population[0].getFunction().globalMaxima();
+        double accurancy = 0;
+        for (double[] d : extremas.keySet()) {
+            accurancy += Math.abs(extremas.get(d) - findClosestChomosome(d, population).fitness());
+        }
+        return accurancy;
+    }
+
     public double distanceAccuracy(DoubleChomosome[] population) {
+        if (population[0].getFunction().allMaximas() == null) {
+            return Double.NaN;
+        }
         Map<double[], Double> extremas = population[0].getFunction().allMaximas();
+        double accurancy = 0;
+        for (double[] d : extremas.keySet()) {
+            accurancy += euclide(d, findClosestChomosome(d, population).values);
+        }
+        return accurancy;
+    }
+
+    public double globalDistanceAccuracy(DoubleChomosome[] population) {
+        if (population[0].getFunction().globalMaxima() == null) {
+            return Double.NaN;
+        }
+        Map<double[], Double> extremas = population[0].getFunction().globalMaxima();
         double accurancy = 0;
         for (double[] d : extremas.keySet()) {
             accurancy += euclide(d, findClosestChomosome(d, population).values);

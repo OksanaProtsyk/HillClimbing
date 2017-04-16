@@ -70,7 +70,7 @@ public class RastriginFunction extends AbstractFunction {
 
     @Override
     public int numberOfExtremas() {
-        return (int)Math.pow(10,spaceSize);  //To change body of implemented methods use File | Settings | File Templates.
+        return (int)Math.pow(10,spaceSize)+1;  //To change body of implemented methods use File | Settings | File Templates.
     }
 
     @Override

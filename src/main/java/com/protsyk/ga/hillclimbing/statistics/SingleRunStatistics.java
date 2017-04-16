@@ -12,23 +12,35 @@ import java.util.Map;
 public class SingleRunStatistics {
     public int NFE;
     public int numberOfPeaks;
-    public double peakRatio;
-    public double peakAccurancy;
-    public double distanceAccurancy;
+    public int numberolGlobalPeaks;
     public double numberOfPeaksToFound;
+    public int numberolGlobalPeaksToFound;
+    public double peakRatio;
+    public double globalPeakRatio;
+    public double peakAccurancy;
+    public double globalPeakAccurancy;
+    public double distanceAccurancy;
+    public double globalDistanceAccurancy;
     public List<Optima> optimas;
     public Map<double[], Double> foundseeds;
 
 
     @Override
     public String toString() {
-        Utils.printArr(optimas);
         return "SingleRunStatistics{" +
                 "NFE=" + NFE +
                 ", numberOfPeaks=" + numberOfPeaks +
+                ", numberolGlobalPeaks=" + numberolGlobalPeaks +
+                ", numberOfPeaksToFound=" + numberOfPeaksToFound +
+                ", numberolGlobalPeaksToFound=" + numberolGlobalPeaksToFound +
                 ", peakRatio=" + peakRatio +
+                ", globalPeakRatio=" + globalPeakRatio +
                 ", peakAccurancy=" + peakAccurancy +
+                ", globalPeakAccurancy=" + globalPeakAccurancy +
                 ", distanceAccurancy=" + distanceAccurancy +
+                ", globalDistanceAccurancy=" + globalDistanceAccurancy +
+                ", foundseedsKeys=" + foundseeds.keySet() +
+                ", foundseedsValues=" + foundseeds.values() +
                 '}';
     }
 

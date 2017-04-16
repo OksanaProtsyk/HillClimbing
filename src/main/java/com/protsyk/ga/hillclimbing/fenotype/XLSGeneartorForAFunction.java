@@ -40,13 +40,11 @@ public class XLSGeneartorForAFunction {
     static {
         criteriaNamesForSingleRun.add("Number of fitness function evaluations");
         criteriaNamesForSingleRun.add("Number of peaks");
-        criteriaNamesForSingleRun.add("Effective number of peaks maintained");
+        criteriaNamesForSingleRun.add("Peak Ratio");
         criteriaNamesForSingleRun.add("Peak accuracy");
         criteriaNamesForSingleRun.add("Distance accuracy");
-        criteriaNamesForSingleRun.add("Extrema Data Found and Real");
-        criteriaNamesForSingleRun.add("Extrema Value Found");
-        criteriaNamesForSingleRun.add("Number of actuall extrema");
-        criteriaNamesForSingleRun.add("Number of actuall extrema");
+        criteriaNamesForSingleRun.add("Extrema Data (Seed data)");
+        criteriaNamesForSingleRun.add("Extrema Value (Seed value)");
 
     }
 
@@ -71,26 +69,15 @@ public class XLSGeneartorForAFunction {
     static int NUMBER_OF_CRITERIUMS_ALL_RUNS = criteriaNamesForAllRuns.size();
     static int RUM_NUMBER = 10;
     List<Deb1Function> deb1Functions = new ArrayList();
-    int[] spaceSize = {1, 2,3,4,5};
+    int[] spaceSize = {1};
     int[] populationSizes = {1000};
-    double[] epsSizes = {0.001, 0.0001, 0.00001};
-    double[] neighbourSizes = {0.1,0.2, 0.3};
+    double[] epsSizes = {0.001};
+    double[] neighbourSizes = {0.1};
 
     public void generateXLSX() {
         for (int i = 0; i < spaceSize.length; i++) {
             deb1Functions.add(new Deb1Function(spaceSize[i]));
         }
-
-        for (Deb1Function function : deb1Functions) {
-              /*for(int i =0; i< populationSizes.length;i++){
-                  for(int j=0; j<epsSizes.length;j++ ){
-                      for (int k=0;k<neighbourSizes.length;k++){
-
-                      }
-                  }
-              }   */
-        }
-
 
         try {
             //Create blank workbook
@@ -222,12 +209,10 @@ public class XLSGeneartorForAFunction {
                                 cell510.setCellValue(allRunStatistics.listOFSinglerRuns.get(r).distanceAccurancy);
 
                                 XSSFCell cell511 = row5.createCell(sellStartNumber + 5);
-                                cell511.setCellValue(allRunStatistics.listOFSinglerRuns.get(r).listOfValuesForOptima());
+                                cell511.setCellValue(allRunStatistics.listOFSinglerRuns.get(r).foundseeds.keySet().toString());
 
                                 XSSFCell cell512 = row5.createCell(sellStartNumber + 6);
-                                cell512.setCellValue(allRunStatistics.listOFSinglerRuns.get(r).listOfExtremaForOptima());
-
-
+                                cell512.setCellValue(allRunStatistics.listOFSinglerRuns.get(r).foundseeds.values().toString());
                             }
                             short index = (short) (6 + (size + 1) * (NUMBER_OF_CRITERIUMS_FOR_ONE_RUN * RUM_NUMBER + NUMBER_OF_CRITERIUMS_ALL_RUNS) - NUMBER_OF_CRITERIUMS_ALL_RUNS);
                             XSSFCell cell5a = row5.createCell(index);
@@ -264,7 +249,7 @@ public class XLSGeneartorForAFunction {
 
 
             FileOutputStream out = new FileOutputStream(
-                    new File("Deb1Function10000.xlsx"));
+                    new File("Deb1Function888.xlsx"));
             workbook.write(out);
             out.close();
             System.out.println(

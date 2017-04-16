@@ -53,7 +53,7 @@ public class Main {
 
         DoublePopulationGenerator doublePopulationGenerator = new DoublePopulationGenerator();
         BinaryPopulationGenerator binaryPopulationGenerator = new BinaryPopulationGenerator();
-        DoubleChomosome[] doublePopluation = doublePopulationGenerator.generatePopulation(1000, shubertFunction2);
+        DoubleChomosome[] doublePopluation = doublePopulationGenerator.generatePopulation(1000, camelFunction);
         BinaryChromosome[] binarypopulation = binaryPopulationGenerator.generatePopulation(10000, shubertFunction);
         BinaryChromosome[] graypopulation = binaryPopulationGenerator.generateGrayPopulation(10000, shubertFunction);
 
@@ -73,7 +73,7 @@ public class Main {
 
 
 */
-      //  System.out.println(hillClimbing.run());
+        System.out.println(hillClimbing.run());
         double[] arrad= {-0.2,1.7};
         System.out.println(griewangkFunction2.numberOfExtremas());
         System.out.println(rastriginFunction.fitTwo(-0.2,1.7));
