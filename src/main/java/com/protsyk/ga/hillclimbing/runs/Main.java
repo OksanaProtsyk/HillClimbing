@@ -73,9 +73,9 @@ public class Main {
 
 
 */
-        System.out.println(hillClimbing.run());
+      //  System.out.println(hillClimbing.run());
         double[] arrad= {-0.2,1.7};
-        System.out.println(rastriginFunction.fit(arrad));
+        System.out.println(griewangkFunction2.numberOfExtremas());
         System.out.println(rastriginFunction.fitTwo(-0.2,1.7));
 
 

@@ -72,6 +72,11 @@ public class GraiwongFunction extends AbstractFunction {
 
     @Override
     public int numberOfExtremas() {
-        return 0;  //To change body of implemented methods use File | Settings | File Templates.
+        return (int)Double.NaN;  //To change body of implemented methods use File | Settings | File Templates.
+    }
+
+    @Override
+    public int numberOfGlobalMaxima() {
+        return 1;
     }
 }

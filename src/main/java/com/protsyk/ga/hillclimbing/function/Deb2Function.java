@@ -97,4 +97,9 @@ public class Deb2Function extends AbstractFunction {
     public int numberOfExtremas() {
         return (int) Math.pow(5, spaceSize);
     }
+
+    @Override
+    public int numberOfGlobalMaxima() {
+        return 1;
+    }
 }

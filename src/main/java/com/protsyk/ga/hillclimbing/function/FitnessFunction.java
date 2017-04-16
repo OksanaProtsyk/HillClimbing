@@ -40,6 +40,8 @@ public interface FitnessFunction {
 
 
     public int numberOfExtremas();
+    public int numberOfGlobalMaxima();
+
 
 
 

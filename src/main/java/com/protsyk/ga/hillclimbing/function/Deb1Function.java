@@ -78,4 +78,9 @@ public class Deb1Function extends AbstractFunction {
         return (int) Math.pow(5, spaceSize);
     }
 
+    @Override
+    public int numberOfGlobalMaxima() {
+        return numberOfExtremas();
+    }
+
 }

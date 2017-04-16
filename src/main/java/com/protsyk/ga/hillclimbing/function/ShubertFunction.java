@@ -71,6 +71,11 @@ public class ShubertFunction extends AbstractFunction {
 
     @Override
     public int numberOfExtremas() {
-        return (int)(spaceSize*Math.pow(3,spaceSize));  //To change body of implemented methods use File | Settings | File Templates.
+        return 0;  //To change body of implemented methods use File | Settings | File Templates.
+    }
+
+    @Override
+    public int numberOfGlobalMaxima() {
+        return (int)(spaceSize*Math.pow(3,spaceSize));
     }
 }

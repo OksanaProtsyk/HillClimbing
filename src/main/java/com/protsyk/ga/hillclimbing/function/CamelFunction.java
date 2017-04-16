@@ -64,11 +64,22 @@ public class CamelFunction extends AbstractFunction {
 
     @Override
     public Map<double[], Double> globalMaxima() {
-        return null;
+
+        Map<double[],Double> map = new HashMap<>();
+        double[] a1 = {-0.0898,0.7126};
+        map.put(a1,fit(a1));
+        double[] a2 = {0.0898,-0.7126};
+        map.put(a2,fit(a2));
+        return map;
     }
 
     @Override
     public int numberOfExtremas() {
-        return 0;  //To change body of implemented methods use File | Settings | File Templates.
+        return 6;  //To change body of implemented methods use File | Settings | File Templates.
+    }
+
+    @Override
+    public int numberOfGlobalMaxima() {
+        return 2;
     }
 }
