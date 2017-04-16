@@ -65,7 +65,12 @@ public class ShubertFunction extends AbstractFunction {
     }
 
     @Override
+    public Map<double[], Double> globalMaxima() {
+        return null;
+    }
+
+    @Override
     public int numberOfExtremas() {
-        return 0;  //To change body of implemented methods use File | Settings | File Templates.
+        return (int)(spaceSize*Math.pow(3,spaceSize));  //To change body of implemented methods use File | Settings | File Templates.
     }
 }

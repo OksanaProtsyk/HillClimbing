@@ -13,8 +13,8 @@ import java.util.Map;
 public class CamelFunction extends AbstractFunction {
     public CamelFunction(){
         this.spaceSize = 2;
-        this.a = -10;
-        this.b = 10;
+        this.a = -3;
+        this.b = 3;
     }
 
     public CamelFunction(int spaceSize, double a, double b) {
@@ -25,7 +25,7 @@ public class CamelFunction extends AbstractFunction {
 
     @Override
     public double fit(double[] values) {
-        double res = ((4 - 2.1 * values[0] * values[0] + Math.pow(values[0], 4) / 3) * values[0] * values[0] + values[0] * values[1] +
+        double res =- ((4 - 2.1 * values[0] * values[0] + Math.pow(values[0], 4) / 3) * values[0] * values[0] + values[0] * values[1] +
                 4 * (values[1] * values[1] - 1) * values[1] * values[1]);
         return res;
     }
@@ -37,7 +37,7 @@ public class CamelFunction extends AbstractFunction {
 
     @Override
     public double fitTwo(double x, double y) {
-        return ((4 - 2.1 * x * x + Math.pow(x, 4) / 3) * x * x + x * y+
+        return -((4 - 2.1 * x * x + Math.pow(x, 4) / 3) * x * x + x * y+
                 4 * (y *y - 1) * y * y);
     }
 
@@ -60,6 +60,11 @@ public class CamelFunction extends AbstractFunction {
         double[] a6 = {1.6071,0.5687};
         map.put(a6,fit(a6));
         return map;
+    }
+
+    @Override
+    public Map<double[], Double> globalMaxima() {
+        return null;
     }
 
     @Override

@@ -53,6 +53,12 @@ public class RastriginFunction extends AbstractFunction {
 
     @Override
     public Map<double[], Double> allMaximas() {
+        return globalMaxima();
+
+    }
+
+    @Override
+    public Map<double[], Double> globalMaxima() {
         Map<double[],Double> map = new HashMap<>();
         double[] arr = new double[spaceSize];
         for (int i=0;i<spaceSize;i++){
@@ -64,6 +70,6 @@ public class RastriginFunction extends AbstractFunction {
 
     @Override
     public int numberOfExtremas() {
-        return 0;  //To change body of implemented methods use File | Settings | File Templates.
+        return (int)Math.pow(10,spaceSize);  //To change body of implemented methods use File | Settings | File Templates.
     }
 }

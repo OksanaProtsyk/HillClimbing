@@ -39,13 +39,13 @@ public class ThreeDFisualizer {
 
 
     public void printPopulation(Chromosome[] population) {
-        double[] x = increment(f.a(), 0.01, f.b());
-        double[] y = increment(f.a(), 0.01, f.b());
+        double[] x = increment(f.a(), 0.1, f.b());
+        double[] y = increment(f.a(), 0.1, f.b());
 
         double[][] z = new double[y.length][x.length];
         for(int i =0; i<y.length; ++i)
             for(int j=0; j<x.length; ++j)
-                z[j][i] =f.fitTwo(x[j],y[i]);
+                z[j][i] =f.fitTwo(y[i],x[j]);
 
         //double[] z = new double[x.length * y.length];
 //        for (int i = 0; i < x.length; ++i) {
@@ -71,7 +71,9 @@ public class ThreeDFisualizer {
             double[] fun = population[i].decode();
             xpopulation[i]=fun[0];
             ypopulation[i]=fun[1];
-            zpopulation[i]=population[i].getFunction().fitTwo(fun[0],fun[1]);
+           // zpopulation[i]=population[i].getFunction().fitTwo(fun[0],fun[1]);
+            zpopulation[i]=population[i].getFunction().fit(fun);
+
             //addScatterPlot("points",population[i].decode(),fun));
         }
 

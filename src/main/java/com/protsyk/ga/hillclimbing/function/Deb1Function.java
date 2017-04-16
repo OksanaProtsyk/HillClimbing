@@ -69,6 +69,11 @@ public class Deb1Function extends AbstractFunction {
     }
 
     @Override
+    public Map<double[], Double> globalMaxima() {
+        return allMaximas();
+    }
+
+    @Override
     public int numberOfExtremas() {
         return (int) Math.pow(5, spaceSize);
     }

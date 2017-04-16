@@ -36,6 +36,8 @@ public interface FitnessFunction {
 
     public int maxNFE();
     public  Map<double[],Double> allMaximas();
+    public  Map<double[],Double> globalMaxima();
+
 
     public int numberOfExtremas();
 

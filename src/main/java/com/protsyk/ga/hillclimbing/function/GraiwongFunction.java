@@ -11,16 +11,16 @@ import java.util.Map;
  * Time: 3:35 PM
  * To change this template use File | Settings | File Templates.
  */
-public class GriewangkFunction extends AbstractFunction {
+public class GraiwongFunction extends AbstractFunction {
 
 
-    public GriewangkFunction(int spaceSize) {
+    public GraiwongFunction(int spaceSize) {
         this.spaceSize = spaceSize;
-        this.a = -6;
-        this.b = 6;
+        this.a = -10;
+        this.b = 10;
     }
 
-    public GriewangkFunction(int spaceSize, double a, double b) {
+    public GraiwongFunction(int spaceSize, double a, double b) {
         this.spaceSize = spaceSize;
         this.a = a;
         this.b = b;
@@ -31,22 +31,21 @@ public class GriewangkFunction extends AbstractFunction {
         double res = 0;
         double multpl = 1;
         for (int i = 0; i < values.length; i++) {
-            res += values[i] * values[i] / 4000;
-            multpl *= Math.cos(values[i] / Math.sqrt(i));
+            res += (values[i] * values[i] )/ 4000;
+            multpl *= Math.cos(values[i] / Math.sqrt(i+1));
         }
-        return values.length - (res - multpl + 1);
+        return values.length- (res - multpl + 1);
     }
 
     @Override
     public double fitONE(double data) {
 
-
-        return 10- (data* data / 4000 -  Math.cos(data )+1);
+        return 1- (data* data / 4000 -  Math.cos(data )+1);
     }
 
     @Override
     public double fitTwo(double x, double y) {
-        return 10 -( x* x / 4000 +y* y / 4000 +Math.cos(x / Math.sqrt(1))*Math.cos(y / Math.sqrt(2))+1);
+        return 2 -(( x* x) / 4000 +(y* y )/ 4000 - Math.cos(x/Math.sqrt(1))*Math.cos(y / Math.sqrt(2))+1);
     }
 
     @Override
@@ -57,6 +56,17 @@ public class GriewangkFunction extends AbstractFunction {
             arr[i]=0;
         }
          map.put(arr,fit(arr));
+        return map;
+    }
+
+    @Override
+    public Map<double[], Double> globalMaxima() {
+        Map<double[],Double> map = new HashMap<>();
+        double[] arr = new double[spaceSize];
+        for (int i=0;i<spaceSize;i++){
+            arr[i]=0;
+        }
+        map.put(arr,fit(arr));
         return map;
     }
 

@@ -1,8 +1,8 @@
 package com.protsyk.ga.hillclimbing;
 
+import com.protsyk.ga.hillclimbing.fenotype.DoubleAlgorithmRunner;
 import com.protsyk.ga.hillclimbing.function.Deb1Function;
 import com.protsyk.ga.hillclimbing.statistics.AllRunStatistics;
-import com.protsyk.ga.hillclimbing.statistics.DoubleAlgorithmRunner;
 
 import java.util.Random;
 

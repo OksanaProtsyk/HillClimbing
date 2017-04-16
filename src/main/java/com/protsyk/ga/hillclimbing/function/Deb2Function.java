@@ -72,6 +72,28 @@ public class Deb2Function extends AbstractFunction {
     }
 
     @Override
+    public Map<double[], Double> globalMaxima() {
+        Map<double[], Double> map = new HashMap<>();
+        double[] arr = {0.1};
+        // Calculate the number of arrays we should create
+        int numArrays = (int) Math.pow(arr.length, spaceSize);
+        // Create each array
+        for (int i = 0; i < numArrays; i++) {
+            double[] current = new double[spaceSize];
+            // Calculate the correct item for each position in the array
+            for (int j = 0; j < spaceSize; j++) {
+                // This is the period with which this position changes, i.e.
+                // a period of 5 means the value changes every 5th array
+                int period = (int) Math.pow(arr.length, spaceSize - j - 1);
+                // Get the correct item and set it
+                int index = i / period % arr.length;
+                current[j] = arr[index];
+            }
+            map.put(current, fit(current));
+        }
+        return map;    }
+
+    @Override
     public int numberOfExtremas() {
         return (int) Math.pow(5, spaceSize);
     }

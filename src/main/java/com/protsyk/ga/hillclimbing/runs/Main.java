@@ -30,7 +30,7 @@ public class Main {
 
         Deb4Function deb4Function = new Deb4Function(1);
         RastriginFunction rastriginFunction = new RastriginFunction(1);
-        GriewangkFunction griewangkFunction = new GriewangkFunction(1);
+        GraiwongFunction griewangkFunction = new GraiwongFunction(1);
         ShubertFunction shubertFunction = new ShubertFunction(1);
 
         Deb1Function deb1Function2 = new Deb1Function(2);
@@ -40,7 +40,7 @@ public class Main {
         Deb3Function deb3Function2 = new Deb3Function(2);
         Deb4Function deb4Function2 = new Deb4Function(2);
         RastriginFunction rastriginFunction2 = new RastriginFunction(2);
-        GriewangkFunction griewangkFunction2 = new GriewangkFunction(2);
+        GraiwongFunction griewangkFunction2 = new GraiwongFunction(2);
         CamelFunction camelFunction = new CamelFunction();
         ShubertFunction shubertFunction2 = new ShubertFunction(2);
         Deb1Function deb1Function50 = new Deb1Function(50);
@@ -53,7 +53,7 @@ public class Main {
 
         DoublePopulationGenerator doublePopulationGenerator = new DoublePopulationGenerator();
         BinaryPopulationGenerator binaryPopulationGenerator = new BinaryPopulationGenerator();
-        DoubleChomosome[] doublePopluation = doublePopulationGenerator.generatePopulation(1000, griewangkFunction2);
+        DoubleChomosome[] doublePopluation = doublePopulationGenerator.generatePopulation(1000, shubertFunction2);
         BinaryChromosome[] binarypopulation = binaryPopulationGenerator.generatePopulation(10000, shubertFunction);
         BinaryChromosome[] graypopulation = binaryPopulationGenerator.generateGrayPopulation(10000, shubertFunction);
 
@@ -70,10 +70,17 @@ public class Main {
 
         }
 
-*/
-        hillClimbing.run();
 
-       // DoubleAlgorithmRunner runner = new DoubleAlgorithmRunner(deb1Function2,1000,0.1,0.0001);
+
+*/
+        System.out.println(hillClimbing.run());
+        double[] arrad= {-0.2,1.7};
+        System.out.println(rastriginFunction.fit(arrad));
+        System.out.println(rastriginFunction.fitTwo(-0.2,1.7));
+
+
+
+        // DoubleAlgorithmRunner runner = new DoubleAlgorithmRunner(deb1Function2,1000,0.1,0.0001);
        // System.out.println(runner.run());
         //BinaryHillClimbing binaryHillClimbing = new BinaryHillClimbing(binarypopulation, 1, 0.000000000000000000001);
 
