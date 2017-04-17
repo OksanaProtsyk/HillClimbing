@@ -53,7 +53,7 @@ public class Main {
 
         DoublePopulationGenerator doublePopulationGenerator = new DoublePopulationGenerator();
         BinaryPopulationGenerator binaryPopulationGenerator = new BinaryPopulationGenerator();
-        DoubleChomosome[] doublePopluation = doublePopulationGenerator.generatePopulation(1000, camelFunction);
+        DoubleChomosome[] doublePopluation = doublePopulationGenerator.generatePopulation(1000, deb2Function2);
         BinaryChromosome[] binarypopulation = binaryPopulationGenerator.generatePopulation(10000, shubertFunction);
         BinaryChromosome[] graypopulation = binaryPopulationGenerator.generateGrayPopulation(10000, shubertFunction);
 

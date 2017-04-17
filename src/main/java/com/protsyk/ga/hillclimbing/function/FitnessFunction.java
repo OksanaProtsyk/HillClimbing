@@ -27,6 +27,10 @@ public interface FitnessFunction {
     public double a();
 
     public double b();
+    public double OMEGA();
+    public String name();
+
+
 
     public int after_comma();
 

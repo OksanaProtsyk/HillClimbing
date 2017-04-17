@@ -38,6 +38,16 @@ public class ShubertFunction extends AbstractFunction {
     }
 
     @Override
+    public double OMEGA() {
+        return 0.5;
+    }
+
+    @Override
+    public String name() {
+        return "Шуберта ";
+    }
+
+    @Override
     public double fitONE(double data) {
             double sum = 0;
             for (int j = 1; j < 5; j++) {

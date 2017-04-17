@@ -11,10 +11,10 @@ import java.util.Map;
  */
 public class SingleRunStatistics {
     public int NFE;
-    public int numberOfPeaks;
-    public int numberolGlobalPeaks;
+    public double numberOfPeaks;
+    public double numberolGlobalPeaks;
     public double numberOfPeaksToFound;
-    public int numberolGlobalPeaksToFound;
+    public double numberolGlobalPeaksToFound;
     public double peakRatio;
     public double globalPeakRatio;
     public double peakAccurancy;
@@ -23,6 +23,7 @@ public class SingleRunStatistics {
     public double globalDistanceAccurancy;
     public List<Optima> optimas;
     public Map<double[], Double> foundseeds;
+    public Map<double[],Double> globalSeeds;
 
 
     @Override
@@ -41,6 +42,8 @@ public class SingleRunStatistics {
                 ", globalDistanceAccurancy=" + globalDistanceAccurancy +
                 ", foundseedsKeys=" + foundseeds.keySet() +
                 ", foundseedsValues=" + foundseeds.values() +
+                ", globalseedsKeys=" + globalSeeds.keySet() +
+                ", globalseedsValues=" + globalSeeds.values() +
                 '}';
     }
 

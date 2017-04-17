@@ -31,6 +31,16 @@ public class CamelFunction extends AbstractFunction {
     }
 
     @Override
+    public double OMEGA() {
+        return 0.5;
+    }
+
+    @Override
+    public String name() {
+        return "Урсема ";
+    }
+
+    @Override
     public double fitONE(double data) {
         return 0;  //To change body of implemented methods use File | Settings | File Templates.
     }

@@ -23,8 +23,8 @@ public class DoublePopulationAnalalizer {
     public SingleRunStatistics analyzeFinalPopulation(DoubleChomosome[] population) {
         SingleRunStatistics singleRunStatistics = new SingleRunStatistics();
         //for function we now allexpremas. if not values is empty
-        singleRunStatistics.numberOfPeaks = getSeeds(population, OMEGA).size();
-        singleRunStatistics.numberolGlobalPeaks = getSeeds(population, OMEGA).size();
+        singleRunStatistics.numberOfPeaks = getSeeds(population, population[0].getFunction().OMEGA()).size();
+        singleRunStatistics.numberolGlobalPeaks = getGlobalSeeds(population, population[0].getFunction().OMEGA()).size();
         singleRunStatistics.numberOfPeaksToFound = population[0].getFunction().numberOfExtremas();
         singleRunStatistics.numberolGlobalPeaksToFound = population[0].getFunction().numberOfGlobalMaxima();
         singleRunStatistics.peakRatio = singleRunStatistics.numberOfPeaks / singleRunStatistics.numberOfPeaksToFound;
@@ -36,8 +36,9 @@ public class DoublePopulationAnalalizer {
         singleRunStatistics.globalPeakAccurancy = globalPeakAccurancy(population);
 
 
-        singleRunStatistics.optimas = listOfOptimasforKnownValues(population, DELTA, OMEGA);
-        singleRunStatistics.foundseeds = getSeeds(population, OMEGA);
+        singleRunStatistics.optimas = listOfOptimasforKnownValues(population, DELTA, population[0].getFunction().OMEGA());
+        singleRunStatistics.foundseeds = getSeeds(population, population[0].getFunction().OMEGA());
+        singleRunStatistics.globalSeeds = getGlobalSeeds(population,population[0].getFunction().OMEGA());
         return singleRunStatistics;
 
     }
@@ -128,6 +129,32 @@ public class DoublePopulationAnalalizer {
         return seeds;
     }
 
+
+    public Map<double[], Double> getGlobalSeeds(DoubleChomosome[] population, double omega) {
+        Map<double[], Double> seeds = new HashMap<>();
+        List<DoubleChomosome> notanalyzed = new ArrayList<>();
+        for (DoubleChomosome ch : population) {
+            notanalyzed.add(ch);
+        }
+            DoubleChomosome x = getBest(notanalyzed);
+            notanalyzed.remove(x);
+            seeds.put(x.values, x.fitness());
+            for (DoubleChomosome ch:notanalyzed) {
+                boolean found = false;
+                for (double[] val : seeds.keySet()) {
+                    if (euclide(val, ch.values) <= omega) {
+                        found = true;
+                    }
+                }
+                if (!found&&(Math.abs(ch.fitness()-x.fitness())<0.0001)) {
+                    seeds.put(ch.values, ch.fitness());
+
+                }
+            }
+
+
+        return seeds;
+    }
     public DoubleChomosome getBest(List<DoubleChomosome> doubleChomosomes) {
         double maxFitness = Double.NEGATIVE_INFINITY;
         DoubleChomosome maxChr = null;

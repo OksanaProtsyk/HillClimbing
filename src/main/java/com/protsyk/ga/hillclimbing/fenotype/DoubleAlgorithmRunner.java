@@ -56,7 +56,10 @@ public class DoubleAlgorithmRunner {
         AllRunStatistics statistics = new AllRunStatistics();
         statistics.listOFSinglerRuns = statisticsList;
         int successruns = 0;
+        int globalSuccessRuns =0;
         int peakSum = 0;
+        int globalPeakSum = 0;
+
         double NFEsum = 0;
         double maxNFE = Double.NEGATIVE_INFINITY;
         double PRsum = 0;
@@ -66,6 +69,15 @@ public class DoubleAlgorithmRunner {
 
         double DAsum = 0;
         double maxDA = Double.NEGATIVE_INFINITY;
+
+
+        double globalPRsum = 0;
+        double globalmaxPR = Double.NEGATIVE_INFINITY;
+        double globalPAsum = 0;
+        double globalmaxPA = Double.NEGATIVE_INFINITY;
+
+        double globalDAsum = 0;
+        double globalmaxDA = Double.NEGATIVE_INFINITY;
 
 
         for (SingleRunStatistics s : statisticsList) {
@@ -89,6 +101,26 @@ public class DoubleAlgorithmRunner {
             if (s.distanceAccurancy > maxDA) {
                 maxDA = s.distanceAccurancy;
             }
+
+
+
+            if (s.globalPeakRatio == 1) {
+                ++globalSuccessRuns;
+            }
+            globalPeakSum += s.numberolGlobalPeaks;
+            globalPRsum += s.globalPeakRatio;
+            globalPAsum += s.globalPeakAccurancy;
+            globalDAsum += s.globalDistanceAccurancy;
+
+            if (s.globalPeakRatio > globalmaxPR) {
+                globalmaxPR = s.globalPeakRatio;
+            }
+            if (s.globalPeakAccurancy > globalmaxPA) {
+                globalmaxPA = s.globalPeakAccurancy;
+            }
+            if (s.globalDistanceAccurancy > globalmaxDA) {
+                globalmaxDA = s.globalDistanceAccurancy;
+            }
         }
         statistics.percentOfAllPeakFound = successruns / statisticsList.size() * 100;
         statistics.avaragePeakFound = peakSum / statisticsList.size();
@@ -100,6 +132,20 @@ public class DoubleAlgorithmRunner {
         statistics.maxDA = maxDA;
         statistics.avaragePA = PAsum / statisticsList.size();
         statistics.maxPA = maxPA;
+
+
+        statistics.globalPercentOfAllPeakFound = globalSuccessRuns / statisticsList.size() * 100;
+        statistics.globalAvaragePeakFound = globalPeakSum / statisticsList.size();
+        statistics.globalAvaragePR = globalPRsum / statisticsList.size();
+        statistics.globalMaxPR = globalmaxPR;
+        statistics.globalAvarageDA = globalDAsum / statisticsList.size();
+        statistics.globalMaxDA = globalmaxDA;
+        statistics.globalAvaragePA = globalPAsum / statisticsList.size();
+        statistics.globalMaxPA = globalmaxPA;
+
+
+
+
 
 
         return statistics;

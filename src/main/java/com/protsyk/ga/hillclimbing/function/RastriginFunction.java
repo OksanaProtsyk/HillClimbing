@@ -37,6 +37,11 @@ public class RastriginFunction extends AbstractFunction {
     }
 
     @Override
+    public String name() {
+        return "Растригіна ";
+    }
+
+    @Override
     public double fitONE(double data) {
         double res = (A * Math.cos(w * data) - data * data);
 

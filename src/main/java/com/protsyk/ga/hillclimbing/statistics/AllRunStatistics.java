@@ -16,6 +16,20 @@ public class AllRunStatistics {
     public double maxPA;
     public double avarageDA;
     public double maxDA;
+
+
+
+    public double globalPercentOfAllPeakFound;
+    public double globalAvaragePeakFound;
+    public double globalAvarageNFE;
+    public double globalMaxNFE;
+    public double globalAvaragePR;
+    public double globalMaxPR;
+    public double globalAvaragePA;
+    public double globalMaxPA;
+    public double globalAvarageDA;
+    public double globalMaxDA;
+
     public List<SingleRunStatistics> listOFSinglerRuns;
 
     @Override

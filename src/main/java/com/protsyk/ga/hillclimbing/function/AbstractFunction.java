@@ -90,5 +90,10 @@ public abstract class AbstractFunction implements FitnessFunction {
         return maxNFE;
     }
 
+    @Override
+    public double OMEGA() {
+        return 0.01;
+    }
+
 
 }

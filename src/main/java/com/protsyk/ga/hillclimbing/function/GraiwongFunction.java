@@ -38,6 +38,11 @@ public class GraiwongFunction extends AbstractFunction {
     }
 
     @Override
+    public String name() {
+        return "Грайвонга ";
+    }
+
+    @Override
     public double fitONE(double data) {
 
         return 1- (data* data / 4000 -  Math.cos(data )+1);
