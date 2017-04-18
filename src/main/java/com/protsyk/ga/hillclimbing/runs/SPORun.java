@@ -55,32 +55,49 @@ public class SPORun {
 
 
         //statistics = runner.run();
-        for (int t = 0; t < 10; t++) {
+        for (int t = 0; t < 100; t++) {
             Random random = new Random();
 
 
-            runner = new         DoubleHillClimbing(doublePopluation,neighbourSize,eps,changespeed);
+            DoubleChomosome[] temp = new DoubleChomosome[doublePopluation.length];
+            for (int j = 0; j < doublePopluation.length; j++) {
+                double[] val = new double[doublePopluation[j].getValues().length];
+                for (int k = 0; k < val.length; k++) {
+                    val[k] = doublePopluation[j].values[k];
+                }
+                temp[j] = new DoubleChomosome(doublePopluation[j].getFunction(), val);
+            }
+
+            runner = new  DoubleHillClimbing(temp,neighbourSize,eps,changespeed);
             statistics =runner.run();
             //populationSize1 = (int) (populationSize + sigmaSPO * random.nextGaussian());
             neighbourSize1 = neighbourSize + sigmaSPO * random.nextGaussian();
             eps1 = eps + sigmaSPO * random.nextGaussian();
-            changespeed1 = changespeed1+sigmaSPO*random.nextGaussian();
+            changespeed1 = changespeed+sigmaSPO*random.nextGaussian();
             if (neighbourSize1<0){
                 neighbourSize1 = neighbourSize;
             }
-            if (eps1<0){
+            if ((eps1<0)){
                 eps1 = eps;
             }
-            if (changespeed1<0){
-                changespeed1 = changespeed;
-            }
+          //  if (changespeed1<1){
+           //     changespeed1 = changespeed;
+           // }
 
-            runnerNEw = new DoubleHillClimbing(doublePopluation, neighbourSize1, eps1,changespeed1);
+            DoubleChomosome[] temp2 = new DoubleChomosome[doublePopluation.length];
+            for (int j = 0; j < doublePopluation.length; j++) {
+                double[] val = new double[doublePopluation[j].getValues().length];
+                for (int k = 0; k < val.length; k++) {
+                    val[k] = doublePopluation[j].values[k];
+                }
+                temp2[j] = new DoubleChomosome(doublePopluation[j].getFunction(), val);
+            }
+            runnerNEw = new DoubleHillClimbing(temp2, neighbourSize1, eps1,changespeed1);
 
             statisticsNew = runnerNEw.run();
 
             if ((statisticsNew.peakRatio>=statistics.peakRatio)&&(statisticsNew.peakRatio<=1)){
-                System.out.println("N = "+populationSize+", neighbour = "+neighbourSize+", eps = "+eps);
+                System.out.println("N___1 = "+populationSize1+", neighbour1 = "+neighbourSize1+", eps = "+eps1+"speed = "+changespeed1);
                 System.out.println(statisticsNew);
                // populationSize =populationSize1;
                 neighbourSize = neighbourSize1;
@@ -89,6 +106,7 @@ public class SPORun {
                 //statistics =statisticsNew;
             }
             sigmaSPO = oneFirstRule(sigmaSPO,aSPO,statistics.peakRatio);
+            System.out.println("N = "+populationSize+", neighbour = "+neighbourSize1+", eps = "+eps1+"speed = "+changespeed1);
 
         }
 

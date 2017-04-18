@@ -39,7 +39,7 @@ public class DoubleHillClimbing {
                // visual.printPopulation(population);
             }
             if (dimention == 2) {
-               // visual3d.printPopulation(population);
+              // visual3d.printPopulation(population);
             }
             for (int i = 0; i < population.length; i++) {
 

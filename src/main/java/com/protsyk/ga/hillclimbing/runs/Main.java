@@ -59,7 +59,7 @@ public class Main {
         //Utils.printArr(doublePopluation);
         System.out.println("_________________________________");
 
-        DoubleHillClimbing hillClimbing = new DoubleHillClimbing(doublePopluation, 0.1, 0.00001,2);
+        DoubleHillClimbing hillClimbing = new DoubleHillClimbing(doublePopluation, 0.255, 0.255,5375380);
         // TwoDFisualizer visual = new TwoDFisualizer(doublePopluation[0].getFunction());
         //visual.printPopulation(doublePopluation);
        /* Map<double[],Double> mapp = deb3Function.allMaximas();
