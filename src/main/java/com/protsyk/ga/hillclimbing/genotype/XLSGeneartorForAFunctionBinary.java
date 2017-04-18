@@ -1,10 +1,9 @@
-package com.protsyk.ga.hillclimbing.statistics;
+package com.protsyk.ga.hillclimbing.genotype;
 
-import com.protsyk.ga.hillclimbing.function.Deb1Function;
-import com.protsyk.ga.hillclimbing.function.Deb2Function;
-import com.protsyk.ga.hillclimbing.function.Deb3Function;
 import com.protsyk.ga.hillclimbing.function.Deb4Function;
+import com.protsyk.ga.hillclimbing.genotype.BinaryAlgorithmRunner;
 import com.protsyk.ga.hillclimbing.model.Optima;
+import com.protsyk.ga.hillclimbing.statistics.AllRunStatistics;
 import com.protsyk.ga.hillclimbing.utils.Utils;
 import org.apache.poi.ss.usermodel.CellStyle;
 import org.apache.poi.ss.util.CellRangeAddress;
@@ -72,10 +71,10 @@ public class XLSGeneartorForAFunctionBinary {
     static int NUMBER_OF_CRITERIUMS_ALL_RUNS = 10;
     static int RUM_NUMBER = 10;
     List<Deb4Function> deb1Functions = new ArrayList();
-    int[] spaceSize = {1, 2,3,4,5};
+    int[] spaceSize = {1, 2};
     int[] populationSizes = {1000};
-    double[] epsSizes = {0.001, 0.0001, 0.00001};
-    double[] neighbourSizes = {0.1,0.2, 0.3};
+    double[] epsSizes = {0.001};
+    double[] neighbourSizes = {0.1};
 
     public void generateXLSX() {
         for (int i = 0; i < spaceSize.length; i++) {

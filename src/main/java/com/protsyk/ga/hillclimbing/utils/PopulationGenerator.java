@@ -1,8 +1,5 @@
 package com.protsyk.ga.hillclimbing.utils;
 
-import com.protsyk.ga.hillclimbing.function.FitnessFunction;
-import com.protsyk.ga.hillclimbing.model.Chromosome;
-
 /**
  * Created with IntelliJ IDEA.
  * User: okpr0814

@@ -1,6 +1,6 @@
 package com.protsyk.ga.hillclimbing.runs;
 
-import com.protsyk.ga.hillclimbing.statistics.XLSGeneartorForAFunctionBinary;
+import com.protsyk.ga.hillclimbing.genotype.XLSGeneartorForAFunctionBinary;
 
 /**
  * Created by okpr0814 on 4/14/2017.

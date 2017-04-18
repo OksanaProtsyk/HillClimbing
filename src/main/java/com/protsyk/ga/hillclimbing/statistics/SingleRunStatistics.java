@@ -40,10 +40,10 @@ public class SingleRunStatistics {
                 ", globalPeakAccurancy=" + globalPeakAccurancy +
                 ", distanceAccurancy=" + distanceAccurancy +
                 ", globalDistanceAccurancy=" + globalDistanceAccurancy +
-                ", foundseedsKeys=" + foundseeds.keySet() +
-                ", foundseedsValues=" + foundseeds.values() +
-                ", globalseedsKeys=" + globalSeeds.keySet() +
-                ", globalseedsValues=" + globalSeeds.values() +
+                //", foundseedsKeys=" + foundseeds.keySet() +
+               // ", foundseedsValues=" + foundseeds.values() +
+               // ", globalseedsKeys=" + globalSeeds.keySet() +
+               // ", globalseedsValues=" + globalSeeds.values() +
                 '}';
     }
 

@@ -1,9 +1,10 @@
-package com.protsyk.ga.hillclimbing.model;
+package com.protsyk.ga.hillclimbing.genotype;
 
 /**
  * Created by okpr0814 on 4/14/2017.
  */
 
+import com.protsyk.ga.hillclimbing.model.Optima;
 import com.protsyk.ga.hillclimbing.statistics.SingleRunStatistics;
 
 import java.util.ArrayList;

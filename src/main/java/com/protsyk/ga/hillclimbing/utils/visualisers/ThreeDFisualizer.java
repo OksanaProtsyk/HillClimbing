@@ -39,8 +39,8 @@ public class ThreeDFisualizer {
 
 
     public void printPopulation(Chromosome[] population) {
-        double[] x = increment(f.a(), 0.1, f.b());
-        double[] y = increment(f.a(), 0.1, f.b());
+        double[] x = increment(f.a(), 0.01, f.b());
+        double[] y = increment(f.a(), 0.01, f.b());
 
         double[][] z = new double[y.length][x.length];
         for(int i =0; i<y.length; ++i)

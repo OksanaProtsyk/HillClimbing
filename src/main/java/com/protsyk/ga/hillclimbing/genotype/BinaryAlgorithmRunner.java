@@ -1,12 +1,14 @@
-package com.protsyk.ga.hillclimbing.statistics;
+package com.protsyk.ga.hillclimbing.genotype;
 
 /**
  * Created by okpr0814 on 4/14/2017.
  */
 
 import com.protsyk.ga.hillclimbing.function.FitnessFunction;
-import com.protsyk.ga.hillclimbing.model.BinaryChromosome;
-import com.protsyk.ga.hillclimbing.model.BinaryHillClimbing;
+import com.protsyk.ga.hillclimbing.genotype.BinaryChromosome;
+import com.protsyk.ga.hillclimbing.genotype.BinaryHillClimbing;
+import com.protsyk.ga.hillclimbing.statistics.AllRunStatistics;
+import com.protsyk.ga.hillclimbing.statistics.SingleRunStatistics;
 import com.protsyk.ga.hillclimbing.utils.BinaryPopulationGenerator;
 import com.protsyk.ga.hillclimbing.utils.Utils;
 

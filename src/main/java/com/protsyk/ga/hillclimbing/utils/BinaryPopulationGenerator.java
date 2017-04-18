@@ -1,10 +1,8 @@
 package com.protsyk.ga.hillclimbing.utils;
 
-import com.protsyk.ga.Calc;
 import com.protsyk.ga.hillclimbing.function.FitnessFunction;
-import com.protsyk.ga.hillclimbing.model.BinaryChromosome;
-import com.protsyk.ga.hillclimbing.model.Chromosome;
-import com.protsyk.ga.hillclimbing.model.GrayChromosome;
+import com.protsyk.ga.hillclimbing.genotype.BinaryChromosome;
+import com.protsyk.ga.hillclimbing.genotype.GrayChromosome;
 
 /**
  * Created with IntelliJ IDEA.

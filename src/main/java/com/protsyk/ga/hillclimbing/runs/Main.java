@@ -3,14 +3,13 @@ package com.protsyk.ga.hillclimbing.runs;
 import com.protsyk.ga.hillclimbing.fenotype.DoubleChomosome;
 import com.protsyk.ga.hillclimbing.fenotype.DoubleHillClimbing;
 import com.protsyk.ga.hillclimbing.function.*;
-import com.protsyk.ga.hillclimbing.model.*;
-import com.protsyk.ga.hillclimbing.fenotype.DoubleAlgorithmRunner;
+import com.protsyk.ga.hillclimbing.genotype.BinaryChromosome;
+import com.protsyk.ga.hillclimbing.genotype.BinaryHillClimbing;
 import com.protsyk.ga.hillclimbing.utils.BinaryPopulationGenerator;
 import com.protsyk.ga.hillclimbing.utils.DoublePopulationGenerator;
 import com.protsyk.ga.hillclimbing.utils.Utils;
 
 import javax.swing.*;
-import java.util.Map;
 
 /**
  * Created with IntelliJ IDEA.
@@ -54,13 +53,13 @@ public class Main {
         DoublePopulationGenerator doublePopulationGenerator = new DoublePopulationGenerator();
         BinaryPopulationGenerator binaryPopulationGenerator = new BinaryPopulationGenerator();
         DoubleChomosome[] doublePopluation = doublePopulationGenerator.generatePopulation(1000, deb2Function2);
-        BinaryChromosome[] binarypopulation = binaryPopulationGenerator.generatePopulation(10000, shubertFunction);
+        BinaryChromosome[] binarypopulation = binaryPopulationGenerator.generatePopulation(1000, deb1Function);
         BinaryChromosome[] graypopulation = binaryPopulationGenerator.generateGrayPopulation(10000, shubertFunction);
 
         //Utils.printArr(doublePopluation);
         System.out.println("_________________________________");
 
-        DoubleHillClimbing hillClimbing = new DoubleHillClimbing(doublePopluation, 0.1, 0.00001);
+        DoubleHillClimbing hillClimbing = new DoubleHillClimbing(doublePopluation, 0.1, 0.0000000000000001);
         // TwoDFisualizer visual = new TwoDFisualizer(doublePopluation[0].getFunction());
         //visual.printPopulation(doublePopluation);
        /* Map<double[],Double> mapp = deb3Function.allMaximas();
@@ -73,7 +72,7 @@ public class Main {
 
 
 */
-        System.out.println(hillClimbing.run());
+        //System.out.println(hillClimbing.run());
         double[] arrad= {-0.2,1.7};
         System.out.println(griewangkFunction2.numberOfExtremas());
         System.out.println(rastriginFunction.fitTwo(-0.2,1.7));
@@ -82,10 +81,10 @@ public class Main {
 
         // DoubleAlgorithmRunner runner = new DoubleAlgorithmRunner(deb1Function2,1000,0.1,0.0001);
        // System.out.println(runner.run());
-        //BinaryHillClimbing binaryHillClimbing = new BinaryHillClimbing(binarypopulation, 1, 0.000000000000000000001);
+        BinaryHillClimbing binaryHillClimbing = new BinaryHillClimbing(binarypopulation, 1, 0.00001);
 
         BinaryHillClimbing grayHillClimbing = new BinaryHillClimbing(graypopulation, 1, 0.000000000000001);
-        // BinaryChromosome[] finalPopulatin =  binaryHillClimbing.run();
+         System.out.println(binaryHillClimbing.run());
         // Utils.printArr(finalPopulatin);
         // grayHillClimbing.run();
 

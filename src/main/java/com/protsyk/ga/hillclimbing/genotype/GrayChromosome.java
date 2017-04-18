@@ -1,6 +1,5 @@
-package com.protsyk.ga.hillclimbing.model;
+package com.protsyk.ga.hillclimbing.genotype;
 
-import com.protsyk.ga.Calc;
 import com.protsyk.ga.hillclimbing.function.FitnessFunction;
 import com.protsyk.ga.hillclimbing.utils.Utils;
 
