@@ -18,7 +18,7 @@ import java.util.Map;
  */
 public class DoublePopulationAnalalizer {
     public final static double DELTA = 0.1;
-    public final static double OMEGA = 1;
+    public final static double OMEGA = 0.05;
 
     public SingleRunStatistics analyzeFinalPopulation(DoubleChomosome[] population) {
         SingleRunStatistics singleRunStatistics = new SingleRunStatistics();

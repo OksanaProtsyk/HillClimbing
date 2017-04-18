@@ -19,15 +19,18 @@ public class DoubleAlgorithmRunner {
     public int populationSize;
     public double neighbourSize;
     public double eps;
+    public double changeSpeed;
+
     //DoubleHillClimbing hillClimbing;
 
-    public DoubleAlgorithmRunner(FitnessFunction function, int populationSize, double neighbourSize, double eps) {
+    public DoubleAlgorithmRunner(FitnessFunction function, int populationSize, double neighbourSize, double eps, double changespeed) {
         this.function = function;
         this.populationSize = populationSize;
         this.neighbourSize = neighbourSize;
         this.eps = eps;
         DoublePopulationGenerator doublePopulationGenerator = new DoublePopulationGenerator();
         this.population = doublePopulationGenerator.generatePopulation(populationSize, function);
+        this.changeSpeed = changespeed;
         //hillClimbing = new DoubleHillClimbing(this.population, neighbourSize, eps);
 
     }
@@ -44,7 +47,7 @@ public class DoubleAlgorithmRunner {
                 }
                 temp[j] = new DoubleChomosome(population[j].getFunction(), val);
             }
-            DoubleHillClimbing hillClimbing = new DoubleHillClimbing(this.population, neighbourSize, eps);
+            DoubleHillClimbing hillClimbing = new DoubleHillClimbing(this.population, neighbourSize, eps,changeSpeed);
             this.population = temp;
             //Utils.printArr(this.population);
             SingleRunStatistics st = hillClimbing.run();
@@ -55,10 +58,10 @@ public class DoubleAlgorithmRunner {
         }
         AllRunStatistics statistics = new AllRunStatistics();
         statistics.listOFSinglerRuns = statisticsList;
-        int successruns = 0;
-        int globalSuccessRuns =0;
-        int peakSum = 0;
-        int globalPeakSum = 0;
+        double successruns = 0;
+        double globalSuccessRuns =0;
+        double peakSum = 0;
+        double globalPeakSum = 0;
 
         double NFEsum = 0;
         double maxNFE = Double.NEGATIVE_INFINITY;

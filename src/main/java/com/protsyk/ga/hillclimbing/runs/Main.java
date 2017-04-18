@@ -59,7 +59,7 @@ public class Main {
         //Utils.printArr(doublePopluation);
         System.out.println("_________________________________");
 
-        DoubleHillClimbing hillClimbing = new DoubleHillClimbing(doublePopluation, 0.1, 0.0000000000000001);
+        DoubleHillClimbing hillClimbing = new DoubleHillClimbing(doublePopluation, 0.1, 0.00001,2);
         // TwoDFisualizer visual = new TwoDFisualizer(doublePopluation[0].getFunction());
         //visual.printPopulation(doublePopluation);
        /* Map<double[],Double> mapp = deb3Function.allMaximas();
@@ -72,7 +72,7 @@ public class Main {
 
 
 */
-        //System.out.println(hillClimbing.run());
+        System.out.println(hillClimbing.run());
         double[] arrad= {-0.2,1.7};
         System.out.println(griewangkFunction2.numberOfExtremas());
         System.out.println(rastriginFunction.fitTwo(-0.2,1.7));
@@ -84,7 +84,7 @@ public class Main {
         BinaryHillClimbing binaryHillClimbing = new BinaryHillClimbing(binarypopulation, 1, 0.00001);
 
         BinaryHillClimbing grayHillClimbing = new BinaryHillClimbing(graypopulation, 1, 0.000000000000001);
-         System.out.println(binaryHillClimbing.run());
+       //  System.out.println(binaryHillClimbing.run());
         // Utils.printArr(finalPopulatin);
         // grayHillClimbing.run();
 

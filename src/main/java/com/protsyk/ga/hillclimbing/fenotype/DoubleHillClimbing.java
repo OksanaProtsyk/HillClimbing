@@ -16,12 +16,14 @@ public class DoubleHillClimbing {
     public double initialNeighbourhood;
     public DoubleChomosome[] population;
     double eps;
+    double changeSpeed =2;
 
-    public DoubleHillClimbing(DoubleChomosome[] population, double initialNeighbourhood, double eps) {
+    public DoubleHillClimbing(DoubleChomosome[] population, double initialNeighbourhood, double eps, double changeSpeed) {
         this.population = population;
 
         this.initialNeighbourhood = initialNeighbourhood;
         this.eps = eps;
+        this.changeSpeed = changeSpeed;
     }
 
     public SingleRunStatistics run() {
@@ -34,10 +36,10 @@ public class DoubleHillClimbing {
         boolean change = true;
         while ((initialNeighbourhood >= eps) && (NFE <= population[0].getFunction().maxNFE())) {
             if (dimention == 1) {
-                //visual.printPopulation(population);
+               // visual.printPopulation(population);
             }
             if (dimention == 2) {
-                //visual3d.printPopulation(population);
+               // visual3d.printPopulation(population);
             }
             for (int i = 0; i < population.length; i++) {
 
@@ -93,8 +95,8 @@ public class DoubleHillClimbing {
 
             //TwoDPrinter.printPopulation(population[0].getFunction(),population,frame);
 
-            initialNeighbourhood = initialNeighbourhood / 2;
-            System.out.println(initialNeighbourhood);
+            initialNeighbourhood = initialNeighbourhood /changeSpeed;
+            //System.out.println(initialNeighbourhood);
 
 
         }
