@@ -48,6 +48,9 @@ public class DoublePopulationAnalalizer {
     }
 
     public int numberOfPeak(DoubleChomosome[] population, double delta, double omega) {
+        if (population[0].getFunction().allMaximas()==null){
+            return 0;
+        }
         int numOfPeaks = 0;
         Map<double[], Double> extremas = population[0].getFunction().allMaximas();
         for (double[] data : extremas.keySet()) {

@@ -45,7 +45,9 @@ public class XLSGeneartorForAFunction {
     static {
         criteriaNamesForSingleRun.add("Number of fitness function evaluations");
         criteriaNamesForSingleRun.add("Number of peaks");
+        criteriaNamesForSingleRun.add("# Peaks if exact known");
         criteriaNamesForSingleRun.add("Peak Ratio");
+        criteriaNamesForSingleRun.add("Exact Peak Ratio");
         criteriaNamesForSingleRun.add("Peak accuracy");
         criteriaNamesForSingleRun.add("Distance accuracy");
         criteriaNamesForSingleRun.add("Extrema Data (Seed data)");
@@ -74,7 +76,9 @@ public class XLSGeneartorForAFunction {
     static int NUMBER_OF_CRITERIUMS_ALL_RUNS = criteriaNamesForAllRuns.size();
     static int RUM_NUMBER = 10;
     List<AbstractFunction> deb1Functions = new ArrayList();
-    int[] spaceSize = {2};
+   // int[] spaceSize = {1,2,3,4};
+    int[] spaceSize = {4,5};
+
     int[] populationSizes = {1000};
     double[] epsSizes = {0.0001, 0.00001, 0.000001};
     double[] changespeeds = {2, 3,1.5};
@@ -84,44 +88,60 @@ public class XLSGeneartorForAFunction {
     static List<AlgorithmConfig> config = new ArrayList<>();
 
     static {
-
+        /*
         config.add(new AlgorithmConfig(1000,0.1,0.0001,1.5));
         config.add(new AlgorithmConfig(1000,0.3,0.00001,2));
         config.add(new AlgorithmConfig(1000,0.1,0.00001,1.5));
         config.add(new AlgorithmConfig(1000,0.25,0.000001,2));
         config.add(new AlgorithmConfig(1000,0.1,0.000001,1.5));
+        config.add(new AlgorithmConfig(1000,0.0777,0.000112,1.6271));
+        config.add(new AlgorithmConfig(1000,0.03617,0.0003677,1.01655));
+          */
+
+
+        config.add(new AlgorithmConfig(10000,0.1,0.0001,1.5));
+        config.add(new AlgorithmConfig(10000,0.3,0.00001,2));
+        config.add(new AlgorithmConfig(10000,0.1,0.00001,1.5));
+        config.add(new AlgorithmConfig(10000,0.25,0.000001,2));
+        config.add(new AlgorithmConfig(10000,0.1,0.000001,1.5));
+        config.add(new AlgorithmConfig(10000,0.0777,0.000112,1.6271));
+        config.add(new AlgorithmConfig(10000,0.03617,0.0003677,1.01655));
 
     }
 
     public void generateXLSX() {
-       /* for (int i = 0; i < spaceSize.length; i++) {
+      /*  for (int i = 0; i < spaceSize.length; i++) {
             deb1Functions.add(new Deb1Function(spaceSize[i]));
-        }   */
+        }    */
 
-       for (int i = 0; i < spaceSize.length; i++) {
+     /* for (int i = 0; i < spaceSize.length; i++) {
             deb1Functions.add(new Deb2Function(spaceSize[i]));
-        }
-        /*
+        }   */
+      /*
         for (int i = 0; i < spaceSize.length; i++) {
             deb1Functions.add(new Deb3Function(spaceSize[i]));
-        }
+        }         */
+
         for (int i = 0; i < spaceSize.length; i++) {
             deb1Functions.add(new Deb4Function(spaceSize[i]));
         }
-        for (int i = 0; i < spaceSize.length; i++) {
+       /* for (int i = 0; i < spaceSize.length; i++) {
             deb1Functions.add(new RastriginFunction(spaceSize[i]));
-        }
+        }    */
 
 
-        for (int i = 0; i < spaceSize.length; i++) {
+      /*  for (int i = 0; i < spaceSize.length; i++) {
             deb1Functions.add(new GraiwongFunction(spaceSize[i]));
-        }
-        for (int i = 0; i < spaceSize.length; i++) {
-            deb1Functions.add(new ShubertFunction(spaceSize[i]));
-        }
+        }    */
 
-        deb1Functions.add(new CamelFunction());
-        */
+
+      /*  for (int i = 0; i < spaceSize.length; i++) {
+            deb1Functions.add(new ShubertFunction(spaceSize[i]));
+        }    */
+
+
+      //  deb1Functions.add(new CamelFunction());
+
 
 
         try {
@@ -133,7 +153,7 @@ public class XLSGeneartorForAFunction {
 
 
             FileOutputStream out = new FileOutputStream(
-                    new File("Deb2Real1_2_Final_2.xlsx"));
+                    new File("Deb4Real_4_5.xlsx"));
             workbook.write(out);
             out.close();
             System.out.println(
@@ -376,16 +396,23 @@ public class XLSGeneartorForAFunction {
                             XSSFCell cell57 = row5.createCell((short) (sellStartNumber + 1));
                             cell57.setCellValue(allRunStatistics.listOFSinglerRuns.get(r).numberOfPeaks);
 
-                            XSSFCell cell58 = row5.createCell((short) (sellStartNumber + 2));
+                            XSSFCell cell57a = row5.createCell((short) (sellStartNumber + 2));
+                            cell57a.setCellValue(allRunStatistics.listOFSinglerRuns.get(r).exactnumberOfPeaks);
+
+                            XSSFCell cell58 = row5.createCell((short) (sellStartNumber + 3));
                             cell58.setCellValue(allRunStatistics.listOFSinglerRuns.get(r).peakRatio);
 
-                            XSSFCell cell59 = row5.createCell((short) (sellStartNumber + 3));
+
+                            XSSFCell cell58a = row5.createCell((short) (sellStartNumber + 4));
+                            cell58a.setCellValue(allRunStatistics.listOFSinglerRuns.get(r).exactRatio);
+
+                            XSSFCell cell59 = row5.createCell((short) (sellStartNumber + 5));
                             cell59.setCellValue(allRunStatistics.listOFSinglerRuns.get(r).peakAccurancy);
 
-                            XSSFCell cell510 = row5.createCell((short) (sellStartNumber + 4));
+                            XSSFCell cell510 = row5.createCell((short) (sellStartNumber + 6));
                             cell510.setCellValue(allRunStatistics.listOFSinglerRuns.get(r).distanceAccurancy);
 
-                            XSSFCell cell511 = row5.createCell(sellStartNumber + 5);
+                            XSSFCell cell511 = row5.createCell(sellStartNumber + 7);
                             String s = "";
                             Set<double[]> l = allRunStatistics.listOFSinglerRuns.get(r).foundseeds.keySet();
                             for (double[] d : l) {
@@ -393,7 +420,7 @@ public class XLSGeneartorForAFunction {
                             }
                             cell511.setCellValue(s);
 
-                            XSSFCell cell512 = row5.createCell(sellStartNumber + 6);
+                            XSSFCell cell512 = row5.createCell(sellStartNumber + 8);
                             cell512.setCellValue(allRunStatistics.listOFSinglerRuns.get(r).foundseeds.values().toString()
                             );
 

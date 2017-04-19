@@ -7,6 +7,8 @@ import java.util.List;
  */
 public class AllRunStatistics {
     public double percentOfAllPeakFound;
+    public double percentOfAllPeakFoundKnown;
+
     public double avaragePeakFound;
     public double avarageNFE;
     public double maxNFE;

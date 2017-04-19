@@ -145,6 +145,7 @@ public class DoubleAlgorithmRunner {
         statistics.globalMaxDA = globalmaxDA;
         statistics.globalAvaragePA = globalPAsum / statisticsList.size();
         statistics.globalMaxPA = globalmaxPA;
+        //statistics.
 
 
 
