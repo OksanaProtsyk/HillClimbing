@@ -52,14 +52,14 @@ public class Main {
 
         DoublePopulationGenerator doublePopulationGenerator = new DoublePopulationGenerator();
         BinaryPopulationGenerator binaryPopulationGenerator = new BinaryPopulationGenerator();
-        DoubleChomosome[] doublePopluation = doublePopulationGenerator.generatePopulation(1000, deb2Function2);
+        DoubleChomosome[] doublePopluation = doublePopulationGenerator.generatePopulation(1000, deb1Function2);
         BinaryChromosome[] binarypopulation = binaryPopulationGenerator.generatePopulation(1000, deb1Function);
         BinaryChromosome[] graypopulation = binaryPopulationGenerator.generateGrayPopulation(10000, shubertFunction);
 
         //Utils.printArr(doublePopluation);
         System.out.println("_________________________________");
 
-        DoubleHillClimbing hillClimbing = new DoubleHillClimbing(doublePopluation, 0.255, 0.255,5375380);
+        DoubleHillClimbing hillClimbing = new DoubleHillClimbing(doublePopluation, 0.236, 0.0007464,1.7685);
         // TwoDFisualizer visual = new TwoDFisualizer(doublePopluation[0].getFunction());
         //visual.printPopulation(doublePopluation);
        /* Map<double[],Double> mapp = deb3Function.allMaximas();

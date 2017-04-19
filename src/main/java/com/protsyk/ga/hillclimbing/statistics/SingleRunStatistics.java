@@ -12,6 +12,8 @@ import java.util.Map;
 public class SingleRunStatistics {
     public int NFE;
     public double numberOfPeaks;
+    public double exactnumberOfPeaks;
+    public double exactRatio;
     public double numberolGlobalPeaks;
     public double numberOfPeaksToFound;
     public double numberolGlobalPeaksToFound;
@@ -40,6 +42,8 @@ public class SingleRunStatistics {
                 ", globalPeakAccurancy=" + globalPeakAccurancy +
                 ", distanceAccurancy=" + distanceAccurancy +
                 ", globalDistanceAccurancy=" + globalDistanceAccurancy +
+                ", exactnumberOfPeaks=" + exactnumberOfPeaks +
+                ", exactRatio=" + exactRatio +
                 //", foundseedsKeys=" + foundseeds.keySet() +
                // ", foundseedsValues=" + foundseeds.values() +
                // ", globalseedsKeys=" + globalSeeds.keySet() +

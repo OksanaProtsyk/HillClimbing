@@ -23,6 +23,8 @@ public class DoublePopulationAnalalizer {
     public SingleRunStatistics analyzeFinalPopulation(DoubleChomosome[] population) {
         SingleRunStatistics singleRunStatistics = new SingleRunStatistics();
         //for function we now allexpremas. if not values is empty
+        singleRunStatistics.exactnumberOfPeaks = (double)numberOfPeak(population,DELTA,population[0].getFunction().OMEGA());
+
         singleRunStatistics.numberOfPeaks = getSeeds(population, population[0].getFunction().OMEGA()).size();
         singleRunStatistics.numberolGlobalPeaks = getGlobalSeeds(population, population[0].getFunction().OMEGA()).size();
         singleRunStatistics.numberOfPeaksToFound = population[0].getFunction().numberOfExtremas();
@@ -31,6 +33,8 @@ public class DoublePopulationAnalalizer {
         singleRunStatistics.globalPeakRatio = singleRunStatistics.numberolGlobalPeaks / singleRunStatistics.numberolGlobalPeaksToFound;
         singleRunStatistics.distanceAccurancy = distanceAccuracy(population);
         singleRunStatistics.globalDistanceAccurancy = globalDistanceAccuracy(population);
+
+        singleRunStatistics.exactRatio = singleRunStatistics.exactnumberOfPeaks/singleRunStatistics.numberOfPeaksToFound;
 
         singleRunStatistics.peakAccurancy = peakAccurancy(population);
         singleRunStatistics.globalPeakAccurancy = globalPeakAccurancy(population);
