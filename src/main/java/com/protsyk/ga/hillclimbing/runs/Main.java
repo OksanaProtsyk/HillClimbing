@@ -52,8 +52,9 @@ public class Main {
 
         DoublePopulationGenerator doublePopulationGenerator = new DoublePopulationGenerator();
         BinaryPopulationGenerator binaryPopulationGenerator = new BinaryPopulationGenerator();
-        DoubleChomosome[] doublePopluation = doublePopulationGenerator.generatePopulation(1000, deb1Function2);
-        BinaryChromosome[] binarypopulation = binaryPopulationGenerator.generatePopulation(1000, deb1Function);
+        DoubleChomosome[] doublePopluation = doublePopulationGenerator.generatePopulation(1000, rastriginFunction2);
+        BinaryChromosome[] binarypopulation = binaryPopulationGenerator.generatePopulation(1000, deb3Function
+        );
         BinaryChromosome[] graypopulation = binaryPopulationGenerator.generateGrayPopulation(10000, shubertFunction);
 
         //Utils.printArr(doublePopluation);
@@ -72,7 +73,7 @@ public class Main {
 
 
 */
-        System.out.println(hillClimbing.run());
+       // System.out.println(hillClimbing.run());
         double[] arrad= {-0.2,1.7};
         System.out.println(griewangkFunction2.numberOfExtremas());
         System.out.println(rastriginFunction.fitTwo(-0.2,1.7));
@@ -84,13 +85,15 @@ public class Main {
         BinaryHillClimbing binaryHillClimbing = new BinaryHillClimbing(binarypopulation, 1, 0.00001);
 
         BinaryHillClimbing grayHillClimbing = new BinaryHillClimbing(graypopulation, 1, 0.000000000000001);
-       //  System.out.println(binaryHillClimbing.run());
+       System.out.println(binaryHillClimbing.run());
         // Utils.printArr(finalPopulatin);
         // grayHillClimbing.run();
 
         int[] arr = {0, 1, 1, 0, 1, 1};
+        Utils.printArr(Utils.addOneBit(arr,0,3));
+        Utils.printArr(Utils.removeOneBit(arr,0,3));
 
-        Utils.printArr(Utils.grayToBinary(arr));
+      //  Utils.printArr(Utils.grayToBinary(arr));
         //TwoDPrinter.printPopulation(deb2Function,doublePopluation);
         System.out.println("+++++++++++++++++");
 

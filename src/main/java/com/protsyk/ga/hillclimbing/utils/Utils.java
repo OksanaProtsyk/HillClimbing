@@ -126,4 +126,29 @@ public class Utils {
         }
         return res.toString();
     }
+
+    public static int[] addOneBit(int[] arr, int start, int end){
+
+        for (int i = end-1; i>=start;i--){
+            if (arr[i]==0){
+                arr[i]=1;
+                break;
+            }
+            arr[i]=0;
+        }
+        return arr;
+    }
+
+    public static int[] removeOneBit(int[] arr, int start, int end){
+
+        for (int i = end-1; i>=start;i--){
+            if (arr[i]==1){
+                arr[i]=0;
+                break;
+            }
+            arr[i]=1;
+        }
+        return arr;
+    }
+
 }

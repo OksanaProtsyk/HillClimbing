@@ -77,7 +77,7 @@ public class XLSGeneartorForAFunction {
     static int RUM_NUMBER = 10;
     List<AbstractFunction> deb1Functions = new ArrayList();
    // int[] spaceSize = {1,2,3,4};
-    int[] spaceSize = {4,5};
+    int[] spaceSize = {5};
 
     int[] populationSizes = {1000};
     double[] epsSizes = {0.0001, 0.00001, 0.000001};
@@ -122,17 +122,17 @@ public class XLSGeneartorForAFunction {
             deb1Functions.add(new Deb3Function(spaceSize[i]));
         }         */
 
-        for (int i = 0; i < spaceSize.length; i++) {
+      /*  for (int i = 0; i < spaceSize.length; i++) {
             deb1Functions.add(new Deb4Function(spaceSize[i]));
-        }
+        }*/
        /* for (int i = 0; i < spaceSize.length; i++) {
             deb1Functions.add(new RastriginFunction(spaceSize[i]));
-        }    */
+        }*/
 
 
-      /*  for (int i = 0; i < spaceSize.length; i++) {
+        for (int i = 0; i < spaceSize.length; i++) {
             deb1Functions.add(new GraiwongFunction(spaceSize[i]));
-        }    */
+        }
 
 
       /*  for (int i = 0; i < spaceSize.length; i++) {
@@ -153,7 +153,7 @@ public class XLSGeneartorForAFunction {
 
 
             FileOutputStream out = new FileOutputStream(
-                    new File("Deb4Real_4_5.xlsx"));
+                    new File("GraiwongReal_5.xlsx"));
             workbook.write(out);
             out.close();
             System.out.println(

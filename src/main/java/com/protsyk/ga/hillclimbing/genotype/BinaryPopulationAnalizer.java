@@ -1,31 +1,56 @@
 package com.protsyk.ga.hillclimbing.genotype;
 
-/**
- * Created by okpr0814 on 4/14/2017.
- */
-
+import com.protsyk.ga.hillclimbing.fenotype.DoubleChomosome;
 import com.protsyk.ga.hillclimbing.model.Optima;
 import com.protsyk.ga.hillclimbing.statistics.SingleRunStatistics;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+
+/**
+ * Created with IntelliJ IDEA.
+ * User: okpr0814
+ * Date: 4/5/17
+ * Time: 4:40 PM
+ * To change this template use File | Settings | File Templates.
+ */
 public class BinaryPopulationAnalizer {
-    public final static double DELTA =0.1;
-    public final static double OMEGA =0.1;
+    public final static double DELTA = 0.1;
+    public final static double OMEGA = 0.05;
+
     public SingleRunStatistics analyzeFinalPopulation(BinaryChromosome[] population) {
         SingleRunStatistics singleRunStatistics = new SingleRunStatistics();
-        singleRunStatistics.numberOfPeaks = numberOfPeak(population, DELTA, OMEGA);
-        singleRunStatistics.numberOfPeaksToFound = population[0].getFunction().allMaximas().size();
-        singleRunStatistics.peakRatio=singleRunStatistics.numberOfPeaks/singleRunStatistics.numberOfPeaksToFound;
+        //for function we now allexpremas. if not values is empty
+        singleRunStatistics.exactnumberOfPeaks = (double)numberOfPeak(population,DELTA,population[0].getFunction().OMEGA());
+
+        singleRunStatistics.numberOfPeaks = getSeeds(population, population[0].getFunction().OMEGA()).size();
+        singleRunStatistics.numberolGlobalPeaks = getGlobalSeeds(population, population[0].getFunction().OMEGA()).size();
+        singleRunStatistics.numberOfPeaksToFound = population[0].getFunction().numberOfExtremas();
+        singleRunStatistics.numberolGlobalPeaksToFound = population[0].getFunction().numberOfGlobalMaxima();
+        singleRunStatistics.peakRatio = singleRunStatistics.numberOfPeaks / singleRunStatistics.numberOfPeaksToFound;
+        singleRunStatistics.globalPeakRatio = singleRunStatistics.numberolGlobalPeaks / singleRunStatistics.numberolGlobalPeaksToFound;
         singleRunStatistics.distanceAccurancy = distanceAccuracy(population);
+        singleRunStatistics.globalDistanceAccurancy = globalDistanceAccuracy(population);
+
+        singleRunStatistics.exactRatio = singleRunStatistics.exactnumberOfPeaks/singleRunStatistics.numberOfPeaksToFound;
+
         singleRunStatistics.peakAccurancy = peakAccurancy(population);
-        singleRunStatistics.optimas = listOfOptimas(population, DELTA, OMEGA);
+        singleRunStatistics.globalPeakAccurancy = globalPeakAccurancy(population);
+
+
+        singleRunStatistics.optimas = listOfOptimasforKnownValues(population, DELTA, population[0].getFunction().OMEGA());
+        singleRunStatistics.foundseeds = getSeeds(population, population[0].getFunction().OMEGA());
+        singleRunStatistics.globalSeeds = getGlobalSeeds(population,population[0].getFunction().OMEGA());
         return singleRunStatistics;
 
     }
 
     public int numberOfPeak(BinaryChromosome[] population, double delta, double omega) {
+        if (population[0].getFunction().allMaximas()==null){
+            return 0;
+        }
         int numOfPeaks = 0;
         Map<double[], Double> extremas = population[0].getFunction().allMaximas();
         for (double[] data : extremas.keySet()) {
@@ -44,7 +69,7 @@ public class BinaryPopulationAnalizer {
                 }
 
             }
-            if (max){
+            if (max) {
                 numOfPeaks++;
             }
         }
@@ -52,18 +77,20 @@ public class BinaryPopulationAnalizer {
         return numOfPeaks;
     }
 
-
-    public List<Optima> listOfOptimas(BinaryChromosome[] population, double delta, double omega) {
+    public List<Optima> listOfOptimasforKnownValues(BinaryChromosome[] population, double delta, double omega) {
+        if (population[0].getFunction().allMaximas()==null){
+            return null;
+        }
         List<Optima> optimasFound = new ArrayList<Optima>();
-        double fitness =0;
-        double[] values =null;
+        double fitness = 0;
+        double[] values = null;
         Map<double[], Double> extremas = population[0].getFunction().allMaximas();
         for (double[] data : extremas.keySet()) {
             boolean max = false;
             for (int i = 0; i < population.length; i++) {
                 if ((Math.abs(extremas.get(data) - population[i].fitness())) < delta) {
                     boolean valuesAlso = true;
-                    fitness =  population[i].fitness();
+                    fitness = population[i].fitness();
                     values = population[i].decode();
                     for (int j = 0; j < data.length; j++) {
                         if (Math.abs(data[j] - population[i].decode()[j]) > omega) {
@@ -77,63 +104,143 @@ public class BinaryPopulationAnalizer {
                 }
 
             }
-            if (max){
-                optimasFound.add(new Optima(values,fitness,extremas.get(data),data));
+            if (max) {
+                optimasFound.add(new Optima(values, fitness, extremas.get(data), data));
             }
         }
 
         return optimasFound;
     }
 
-    public double peakAccurancy(BinaryChromosome[] population){
+    public Map<double[], Double> getSeeds(BinaryChromosome[] population, double omega) {
+        Map<double[], Double> seeds = new HashMap<>();
+        List<BinaryChromosome> notanalyzed = new ArrayList<>();
+        for (BinaryChromosome ch : population) {
+            notanalyzed.add(ch);
+        }
+        while (!notanalyzed.isEmpty()) {
+            BinaryChromosome x = getBest(notanalyzed);
+            notanalyzed.remove(x);
+            boolean found = false;
+            for (double[] val : seeds.keySet()) {
+                if (euclide(val, x.decode()) <= omega) {
+                    found = true;
+                }
+            }
+            if (!found) {
+                seeds.put(x.decode(), x.fitness());
+
+            }
+        }
+
+        return seeds;
+    }
+
+
+    public Map<double[], Double> getGlobalSeeds(BinaryChromosome[] population, double omega) {
+        Map<double[], Double> seeds = new HashMap<>();
+        List<BinaryChromosome> notanalyzed = new ArrayList<>();
+        for (BinaryChromosome ch : population) {
+            notanalyzed.add(ch);
+        }
+        BinaryChromosome x = getBest(notanalyzed);
+        notanalyzed.remove(x);
+        seeds.put(x.decode(), x.fitness());
+        for (BinaryChromosome ch:notanalyzed) {
+            boolean found = false;
+            for (double[] val : seeds.keySet()) {
+                if (euclide(val, ch.decode()) <= omega) {
+                    found = true;
+                }
+            }
+            if (!found&&(Math.abs(ch.fitness()-x.fitness())<0.0001)) {
+                seeds.put(ch.decode(), ch.fitness());
+
+            }
+        }
+
+
+        return seeds;
+    }
+    public BinaryChromosome getBest(List<BinaryChromosome> binaryChromosomes) {
+        double maxFitness = Double.NEGATIVE_INFINITY;
+        BinaryChromosome maxChr = null;
+        for (BinaryChromosome c : binaryChromosomes) {
+            if (c.fitness() > maxFitness) {
+                maxFitness = c.fitness();
+                maxChr = c;
+            }
+        }
+        return maxChr;
+    }
+
+    public double peakAccurancy(BinaryChromosome[] population) {
+        if (population[0].getFunction().allMaximas() == null) {
+            return Double.NaN;
+        }
         Map<double[], Double> extremas = population[0].getFunction().allMaximas();
-        double accurancy =0;
-        for (double[] d:extremas.keySet()){
-            accurancy+=Math.abs(extremas.get(d)-findClosestChomosome(d,population).fitness());
+        double accurancy = 0;
+        for (double[] d : extremas.keySet()) {
+            accurancy += Math.abs(extremas.get(d) - findClosestChomosome(d, population).fitness());
         }
         return accurancy;
     }
 
-    public double distanceAccuracy(BinaryChromosome[] population){
-        Map<double[], Double> extremas = population[0].getFunction().allMaximas();
-        double accurancy =0;
-        for (double[] d:extremas.keySet()){
-            accurancy+=euclide(d,findClosestChomosome(d,population).decode());
+    public double globalPeakAccurancy(BinaryChromosome[] population) {
+        if (population[0].getFunction().globalMaxima() == null) {
+            return Double.NaN;
+        }
+        Map<double[], Double> extremas = population[0].getFunction().globalMaxima();
+        double accurancy = 0;
+        for (double[] d : extremas.keySet()) {
+            accurancy += Math.abs(extremas.get(d) - findClosestChomosome(d, population).fitness());
         }
         return accurancy;
     }
 
+    public double distanceAccuracy(BinaryChromosome[] population) {
+        if (population[0].getFunction().allMaximas() == null) {
+            return Double.NaN;
+        }
+        Map<double[], Double> extremas = population[0].getFunction().allMaximas();
+        double accurancy = 0;
+        for (double[] d : extremas.keySet()) {
+            accurancy += euclide(d, findClosestChomosome(d, population).decode());
+        }
+        return accurancy;
+    }
 
-    BinaryChromosome findClosestChomosome(double[] extremaValues,BinaryChromosome[] population){
-        double distance =10000;
+    public double globalDistanceAccuracy(BinaryChromosome[] population) {
+        if (population[0].getFunction().globalMaxima() == null) {
+            return Double.NaN;
+        }
+        Map<double[], Double> extremas = population[0].getFunction().globalMaxima();
+        double accurancy = 0;
+        for (double[] d : extremas.keySet()) {
+            accurancy += euclide(d, findClosestChomosome(d, population).decode());
+        }
+        return accurancy;
+    }
+
+    BinaryChromosome findClosestChomosome(double[] extremaValues, BinaryChromosome[] population) {
+        double distance = 10000;
         BinaryChromosome closest = population[0];
-        for (BinaryChromosome ch: population){
-            double newDist = euclide(extremaValues,ch.decode());
-            if (newDist<distance){
+        for (BinaryChromosome ch : population) {
+            double newDist = euclide(extremaValues, ch.decode());
+            if (newDist < distance) {
                 distance = newDist;
-                closest=ch;
+                closest = ch;
             }
         }
         return closest;
     }
 
-    double euclide(double[] a,double[] b){
-        double newDist =0;
-        for (int i=0;i<a.length;i++){
-            newDist+=(a[i]-b[i])*(a[i]-b[i]);
+    double euclide(double[] a, double[] b) {
+        double newDist = 0;
+        for (int i = 0; i < a.length; i++) {
+            newDist += (a[i] - b[i]) * (a[i] - b[i]);
         }
         return Math.sqrt(newDist);
     }
 
-    int heming(int[] a,int[] b){
-        int newDist =0;
-        for (int i=0;i<a.length;i++){
-            if(a[i]!=b[i]){
-                newDist++;
-            }
-        }
-        return newDist;
-    }
-
 }
-
