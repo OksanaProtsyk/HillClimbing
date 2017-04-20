@@ -45,11 +45,11 @@ public class BinaryHillClimbing {
             }
 
             for (int i = 0; i < population.length; i++) {
-                int start = Calc.randomInt(0, population[i].getFunction().spaceSize());
+               int start = Calc.randomInt(0, population[i].getFunction().spaceSize());
                 boolean change = true;
                 while (change) {
                     change = false;
-                    for (int j = start; j < population[i].getFunction().spaceSize(); j++) {
+                    for (int j = 0; j < population[i].getFunction().spaceSize(); j++) {
                         int begin = j * population[i].bits.length / population[i].getFunction().spaceSize();
                         int end = begin + population[i].bits.length / population[i].getFunction().spaceSize();
                         double currFunc = population[i].fitness();
@@ -62,15 +62,15 @@ public class BinaryHillClimbing {
                             prev[k] = population[i].bits[k];
 
                         }
-                        population[i].bits = Utils.addOneBit(population[i].bits, start, end);
+                        population[i].bits = Utils.addOneBit(population[i].bits, begin, end);
                         if (currFunc >population[i].fitness()) {
                             if (NFE > population[0].getFunction().maxNFE()) {
                                 break;
                             }
                             NFE++;
-                            population[i].bits = Utils.removeOneBit(population[i].bits, start, end);
+                            population[i].bits = Utils.removeOneBit(population[i].bits, begin, end);
 
-                            population[i].bits = Utils.removeOneBit(population[i].bits, start, end);
+                            population[i].bits = Utils.removeOneBit(population[i].bits, begin, end);
                             if (currFunc > population[i].fitness()) {
                                 if (NFE > population[0].getFunction().maxNFE()) {
                                     break;
