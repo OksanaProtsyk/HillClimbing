@@ -76,8 +76,8 @@ public class XLSGeneartorForAFunctionBinary {
     static int NUMBER_OF_CRITERIUMS_ALL_RUNS = criteriaNamesForAllRuns.size();
     static int RUM_NUMBER = 10;
     List<AbstractFunction> deb1Functions = new ArrayList();
-     int[] spaceSize = {1,2};
-    //int[] spaceSize = {5};
+     int[] spaceSize = {1,2,3,4};
+  //  int[] spaceSize = {5};
 
     int[] populationSizes = {1000};
     double[] epsSizes = {0.0001, 0.00001, 0.000001};
@@ -89,13 +89,13 @@ public class XLSGeneartorForAFunctionBinary {
 
     static {
 
-        config.add(new AlgorithmConfig(1000,0.1,0.0001,1.5));
-        config.add(new AlgorithmConfig(1000,0.3,0.00001,2));
-        config.add(new AlgorithmConfig(1000,0.1,0.00001,1.5));
-        config.add(new AlgorithmConfig(1000,0.25,0.000001,2));
-        config.add(new AlgorithmConfig(1000,0.1,0.000001,1.5));
-        config.add(new AlgorithmConfig(1000,0.0777,0.000112,1.6271));
-        config.add(new AlgorithmConfig(1000,0.03617,0.0003677,1.01655));
+        config.add(new AlgorithmConfig(10000,1,1,1));
+      //  config.add(new AlgorithmConfig(1000,0.3,0.00001,2));
+       // config.add(new AlgorithmConfig(1000,0.1,0.00001,1.5));
+        //config.add(new AlgorithmConfig(1000,0.25,0.000001,2));
+       // config.add(new AlgorithmConfig(1000,0.1,0.000001,1.5));
+       // config.add(new AlgorithmConfig(1000,0.0777,0.000112,1.6271));
+       // config.add(new AlgorithmConfig(1000,0.03617,0.0003677,1.01655));
 
 
 /*
@@ -111,37 +111,38 @@ public class XLSGeneartorForAFunctionBinary {
     }
 
     public void generateXLSX() {
-        for (int i = 0; i < spaceSize.length; i++) {
+      for (int i = 0; i < spaceSize.length; i++) {
             deb1Functions.add(new Deb1Function(spaceSize[i]));
         }
-
-     /* for (int i = 0; i < spaceSize.length; i++) {
+   /*
+     for (int i = 0; i < spaceSize.length; i++) {
             deb1Functions.add(new Deb2Function(spaceSize[i]));
-        }   */
-      /*
+        }
+
         for (int i = 0; i < spaceSize.length; i++) {
             deb1Functions.add(new Deb3Function(spaceSize[i]));
-        }         */
+        }
 
-      /*  for (int i = 0; i < spaceSize.length; i++) {
+       for (int i = 0; i < spaceSize.length; i++) {
             deb1Functions.add(new Deb4Function(spaceSize[i]));
-        }*/
-       /* for (int i = 0; i < spaceSize.length; i++) {
+        }
+        */
+       for (int i = 0; i < spaceSize.length; i++) {
             deb1Functions.add(new RastriginFunction(spaceSize[i]));
-        }*/
+        }
 
 
-       /* for (int i = 0; i < spaceSize.length; i++) {
+       for (int i = 0; i < spaceSize.length; i++) {
             deb1Functions.add(new GraiwongFunction(spaceSize[i]));
         }
-*/
 
-      /*  for (int i = 0; i < spaceSize.length; i++) {
+       /*
+        for (int i = 0; i < spaceSize.length; i++) {
             deb1Functions.add(new ShubertFunction(spaceSize[i]));
-        }    */
+        }
+            */
 
-
-        //  deb1Functions.add(new CamelFunction());
+        //deb1Functions.add(new CamelFunction());
 
 
 
@@ -154,7 +155,7 @@ public class XLSGeneartorForAFunctionBinary {
 
 
             FileOutputStream out = new FileOutputStream(
-                    new File("Deb1_Binary_1_2.xlsx"));
+                    new File("NOT_WWorkFunct_Binary_1_2_3_4.xlsx"));
             workbook.write(out);
             out.close();
             System.out.println(

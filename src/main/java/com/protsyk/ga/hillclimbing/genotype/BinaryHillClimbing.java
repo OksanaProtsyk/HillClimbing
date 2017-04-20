@@ -33,12 +33,14 @@ public class BinaryHillClimbing {
 
         TwoDFisualizer visual = new TwoDFisualizer(population[0].getFunction());
         ThreeDFisualizer visual3d = new ThreeDFisualizer(population[0].getFunction());
+        int counter = 0;
+        int MAX_COUNTER = 3;
 
         boolean chdet = true;
       while (chdet&&(NFE <= population[0].getFunction().maxNFE())) {
           chdet =false;
             if (dimention == 1) {
-                visual.printPopulation(population);
+                //visual.printPopulation(population);
             }
             if (dimention == 2) {
                 //visual3d.printPopulation(population);
@@ -46,24 +48,22 @@ public class BinaryHillClimbing {
 
             for (int i = 0; i < population.length; i++) {
                int start = Calc.randomInt(0, population[i].getFunction().spaceSize());
+               // System.out.println();
                 boolean change = true;
                 while (change) {
                     change = false;
-                    for (int j = 0; j < population[i].getFunction().spaceSize(); j++) {
+                    for (int j = start; j < population[i].getFunction().spaceSize(); j++) {
                         int begin = j * population[i].bits.length / population[i].getFunction().spaceSize();
                         int end = begin + population[i].bits.length / population[i].getFunction().spaceSize();
                         double currFunc = population[i].fitness();
 
+                      //  System.out.println("Currebt fitness "+ currFunc);
 
-                        int[] prev = new int[population[i].bits.length];
 
-
-                        for (int k = 0; k < population[i].bits.length; k++) {
-                            prev[k] = population[i].bits[k];
-
-                        }
                         population[i].bits = Utils.addOneBit(population[i].bits, begin, end);
                         if (currFunc >population[i].fitness()) {
+                         // System.out.println("Current: "+currFunc +"_____PP fitness 1 "+ population[i].fitness());
+
                             if (NFE > population[0].getFunction().maxNFE()) {
                                 break;
                             }
@@ -72,11 +72,13 @@ public class BinaryHillClimbing {
 
                             population[i].bits = Utils.removeOneBit(population[i].bits, begin, end);
                             if (currFunc > population[i].fitness()) {
+                              //System.out.println("PP fitness 2"+ population[i].fitness());
+
                                 if (NFE > population[0].getFunction().maxNFE()) {
                                     break;
                                 }
                                 NFE++;
-                                population[i].bits = Utils.addOneBit(population[i].bits, start, end);
+                                population[i].bits = Utils.addOneBit(population[i].bits, begin, end);
 
                             } else {
                                 change = true;
@@ -89,11 +91,17 @@ public class BinaryHillClimbing {
 
                         }
                     }
-                    //System.out.println("Cha:="+change);
+                 //  System.out.println("Cha:="+change);
+                  //  System.out.println("Number of fitness function evaluations, NFE = "+NFE);
+
                 }
             }
             //initialNeighbourhood=initialNeighbourhood/2;
             // visual.printPopulation( population);
+        //  counter++;
+         // if((chdet == false)&&(counter<MAX_COUNTER)) {
+         //         chdet = true;
+         // }
         }
         // System.out.println("Number of fitness function evaluations, NFE = "+NFE);
         BinaryPopulationAnalizer analalizer = new BinaryPopulationAnalizer();

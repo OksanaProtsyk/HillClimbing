@@ -52,15 +52,15 @@ public class Main {
 
         DoublePopulationGenerator doublePopulationGenerator = new DoublePopulationGenerator();
         BinaryPopulationGenerator binaryPopulationGenerator = new BinaryPopulationGenerator();
-        DoubleChomosome[] doublePopluation = doublePopulationGenerator.generatePopulation(1000, rastriginFunction2);
-        BinaryChromosome[] binarypopulation = binaryPopulationGenerator.generatePopulation(1000, griewangkFunction
+        DoubleChomosome[] doublePopluation = doublePopulationGenerator.generatePopulation(1000, griewangkFunction2);
+        BinaryChromosome[] binarypopulation = binaryPopulationGenerator.generatePopulation(1000, rastriginFunction
         );
-        BinaryChromosome[] graypopulation = binaryPopulationGenerator.generateGrayPopulation(10000, shubertFunction);
+        BinaryChromosome[] graypopulation = binaryPopulationGenerator.generateGrayPopulation(1000, deb1Function);
 
         //Utils.printArr(doublePopluation);
         System.out.println("_________________________________");
 
-        DoubleHillClimbing hillClimbing = new DoubleHillClimbing(doublePopluation, 0.236, 0.0007464,1.7685);
+        DoubleHillClimbing hillClimbing = new DoubleHillClimbing(doublePopluation, 0.03617                , 0.0003677                ,1.01655        );
         // TwoDFisualizer visual = new TwoDFisualizer(doublePopluation[0].getFunction());
         //visual.printPopulation(doublePopluation);
        /* Map<double[],Double> mapp = deb3Function.allMaximas();
@@ -73,7 +73,7 @@ public class Main {
 
 
 */
-       // System.out.println(hillClimbing.run());
+        System.out.println(hillClimbing.run());
         double[] arrad= {-0.2,1.7};
         System.out.println(griewangkFunction2.numberOfExtremas());
         System.out.println(rastriginFunction.fitTwo(-0.2,1.7));
@@ -85,9 +85,9 @@ public class Main {
         BinaryHillClimbing binaryHillClimbing = new BinaryHillClimbing(binarypopulation, 1, 0.00001);
 
         BinaryHillClimbing grayHillClimbing = new BinaryHillClimbing(graypopulation, 1, 0.000000000000001);
-       System.out.println(binaryHillClimbing.run());
+       //System.out.println(binaryHillClimbing.run());
         // Utils.printArr(finalPopulatin);
-        // grayHillClimbing.run();
+      //  System.out.println( grayHillClimbing.run());
 
         int[] arr = {0, 1, 1, 0, 1, 1};
         Utils.printArr(Utils.addOneBit(arr,0,3));

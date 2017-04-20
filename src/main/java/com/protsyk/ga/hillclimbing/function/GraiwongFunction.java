@@ -16,8 +16,8 @@ public class GraiwongFunction extends AbstractFunction {
 
     public GraiwongFunction(int spaceSize) {
         this.spaceSize = spaceSize;
-        this.a = -10;
-        this.b = 10;
+        this.a = -90;
+        this.b = 90;
     }
 
     public GraiwongFunction(int spaceSize, double a, double b) {
